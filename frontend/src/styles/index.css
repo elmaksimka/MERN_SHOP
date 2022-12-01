@@ -3,6 +3,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: "Lato";
 }
 
 a {
@@ -24,6 +25,7 @@ main {
 }
 
 .signinup-container {
+  margin: 0 auto;
   width: 500px;
   height: 650px;
   margin: 50px auto 0;
@@ -142,6 +144,7 @@ main {
 .header .topbar__start {
   display: flex;
   align-items: center;
+  opacity: 0.6 !important;
 }
 .header .topbar__login__item {
   color: var(--white);
@@ -153,6 +156,9 @@ main {
   font-size: var(--size-s);
   color: var(--white);
   opacity: 0.6;
+}
+.header .topbar__text:hover, .header .topbar__text:active {
+  opacity: 1;
 }
 .header .topbar__text_active {
   font-size: var(--size-s);
@@ -196,16 +202,22 @@ main {
   align-items: center;
 }
 .header .mainbar__text_active {
-  color: var(--primary);
+  color: var(--gray700) !important;
 }
 .header .mainbar__text_color_red {
-  color: var(--danger);
+  color: var(--danger) !important;
 }
 .header .mainbar__categories {
   width: 20%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.header .mainbar__categories a {
+  color: #000;
+}
+.header .mainbar__categories a:hover {
+  color: var(--gray700) !important;
 }
 .header .mainbar__favourite {
   display: flex;
@@ -276,6 +288,7 @@ main {
   position: absolute;
   top: 200px;
   left: 200px;
+  text-align: left;
 }
 .hero-slider__new-collection {
   font-size: var(--size-l);
@@ -412,7 +425,7 @@ main {
   color: var(--gray700);
 }
 .new-arrivals__see-collection {
-  text-decoration: underline;
+  text-decoration: underline !important;
   color: var(--primary);
 }
 .new-arrivals__products {
@@ -426,18 +439,25 @@ main {
   position: relative;
   margin: 0 10px;
 }
-.new-arrivals__products__item img {
+.new-arrivals__products__item__img {
   width: 246px;
   height: 320px;
 }
-.new-arrivals__products__item img[alt=heart] {
+.new-arrivals__heart {
   width: 16px;
   height: 16px;
-}
-.new-arrivals__heart {
   position: absolute;
   right: 16px;
   bottom: 150px;
+}
+.new-arrivals__heart_active {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 16px;
+  bottom: 150px;
+  background: red;
+  border-radius: 44px;
 }
 .new-arrivals__products-names {
   display: flex;
@@ -712,6 +732,9 @@ main {
 .trending-now__button {
   width: 250px;
   height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   font-weight: var(--font-bold);
   letter-spacing: 0.5px;
@@ -720,13 +743,20 @@ main {
   border-radius: 4px;
 }
 .trending-now__heart {
+  width: 16px !important;
+  height: 16px !important;
   position: absolute;
   right: 16px;
-  bottom: 100px;
+  bottom: 150px;
 }
-.trending-now__heart img {
-  width: 16px;
-  height: 16px;
+.trending-now__heart_active {
+  width: 16px !important;
+  height: 16px !important;
+  position: absolute;
+  right: 16px;
+  bottom: 150px;
+  background: red;
+  border-radius: 44px;
 }
 
 .sale {
@@ -783,12 +813,17 @@ main {
   opacity: 0.5;
 }
 .sale__product {
+  height: 500px;
   position: relative;
   margin-right: 20px;
 }
-.sale__product img {
+.sale__product__img {
   width: 390px;
   height: 440px;
+}
+.sale__product:hover .sale__cart {
+  visibility: visible;
+  opacity: 1;
 }
 .sale__title {
   position: absolute;
@@ -824,6 +859,9 @@ main {
 .sale__button {
   width: 250px;
   height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   font-weight: var(--font-bold);
   letter-spacing: 0.5px;
@@ -839,6 +877,50 @@ main {
 .sale__heart img {
   width: 16px;
   height: 16px;
+}
+.sale__cart {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s, border 0.5s linear;
+}
+.sale__cart__properties {
+  display: flex;
+  justify-content: space-between;
+}
+.sale__cart__properties__size {
+  padding-left: 10px;
+}
+.sale__cart__properties__size span {
+  margin-right: 10px;
+  border: 1px solid black;
+}
+.sale__cart__properties__colors {
+  display: flex;
+}
+.sale__cart__properties__colors div {
+  position: relative;
+}
+.sale__cart__properties__colors img[alt=circle] {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+}
+.sale__cart__properties__colors img[alt=ellipse] {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  display: block;
+}
+.sale__cart__button {
+  width: 100%;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 4px;
+}
+.sale__cart__button img {
+  margin-right: 10px;
 }
 
 .cta-mobile-app {
@@ -945,6 +1027,9 @@ main {
 .instagram__button {
   width: 250px;
   height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 150px;
   letter-spacing: 0.5px;
@@ -952,6 +1037,12 @@ main {
   color: var(--primary);
   border: 1px solid var(--primary);
   border-radius: 4px;
+}
+.instagram__button:hover {
+  background-color: var(--primary);
+  color: var(--white);
+  transition: 0.7s;
+  transform: rotate(360deg);
 }
 
 .blog {
@@ -973,6 +1064,9 @@ main {
   left: 360px;
 }
 .blog__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
   right: 360px;
@@ -1075,22 +1169,26 @@ main {
   background-color: var(--primary);
   color: var(--white);
 }
-.subscribe__input-group {
+.subscribe__form {
   width: 500px;
   height: 90px;
   position: relative;
 }
-.subscribe__email-input {
+.subscribe__input {
   width: 344px;
   height: 52px;
+  margin-right: 10px;
 }
 .subscribe__receive-communications {
   line-height: 160%;
   color: var(--gray800);
 }
-.subscribe_h1 {
-  display: inline-flex;
-  margin: 0;
+.subscribe__receive-communications input {
+  margin-right: 10px;
+}
+.subscribe__title {
+  display: flex;
+  justify-content: left;
 }
 .subscribe__text1 {
   font-size: var(--size-xl);
@@ -1188,4 +1286,8 @@ main {
 .footer__apps {
   display: flex;
   justify-content: space-between;
+}
+
+.heart_active {
+  background: red;
 }/*# sourceMappingURL=index.css.map */

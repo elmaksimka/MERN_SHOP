@@ -1,15 +1,15 @@
 :root {
-    --size-xs: 12px;
-    --size-s: 14px;
-    --size-m: 16px;
-    --size-l: 18px;
-    --size-xl: 20px;
-    --size-24px: 24px;
-    --size-28px: 28px;
-    --size-32px: 32px;
-    --size-46px: 46px;
-    --size-72px: 72px;
-    --font-normal: 400;
-    --font-bold: 700;
-    --font-black: 900;
+  --size-xs: 12px;
+  --size-s: 14px;
+  --size-m: 16px;
+  --size-l: 18px;
+  --size-xl: 20px;
+  --size-24px: 24px;
+  --size-28px: 28px;
+  --size-32px: 32px;
+  --size-46px: 46px;
+  --size-72px: 72px;
+  --font-normal: 400;
+  --font-bold: 700;
+  --font-black: 900;
 }

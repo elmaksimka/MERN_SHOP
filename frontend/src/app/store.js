@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from '../features/auth/authSlice'
-import counterReducer from '../features/counterSlice';
+// import authReducer from '../features/auth/authSlice';
+import favouriteSlice from './favourite-slice';
+import cartSlice from './cart-slice';
 
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
-    count: counterReducer
+    favourite: favouriteSlice.reducer,
+    cart: cartSlice.reducer
   },
 });

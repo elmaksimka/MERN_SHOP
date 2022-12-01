@@ -1,50 +1,75 @@
 import messages from '../img/messages.svg'
+import Button from './Button'
+import { useState } from 'react'
 
 function Subscribe() {
-  return (
-    <div class="subscribe">
-            <div class="subscribe__content">
-                <div class="subscribe__for-updates">
-                    <h1 class="subscribe_h1">
-                      Subscribe for updates
+
+    const [email, setEmail] = useState()
+
+    const emailUpdate = (event) => {
+        setEmail(event.target.value)
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const postURL = "http://localhost:5000/emails/"
+        fetch(postURL, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: email,
+            })
+        })
+            .then(() => {
+                if (email.length > 0) {
+                    alert('You have been added to the system!');
+                } else {
+                    alert('Enter valid email!')
+                }
+            })
+    }
+    return (
+        <div className="subscribe">
+            <div className="subscribe__content">
+                <div className="subscribe__for-updates">
+                    <h1 className="subscribe__title">
+                        Subscribe for updates
                     </h1>
-                    <div class="subscribe__text1">
-                      Subscribe for exclusive early sale access and new arrivals.
+                    <div className="subscribe__text1">
+                        Subscribe for exclusive early sale access and new arrivals.
                     </div>
-                    <div class="subscribe__checkboxes">
-                        <div class="subscribe__checkbox-category">
-                          Women
-                        </div>
-                        <div class="subscribe__checkbox-category">
-                          Men
-                        </div>
-                        <div class="subscribe__checkbox-category subscribe__checkbox-category_hover">
-                          Girls
-                        </div>
-                        <div class="subscribe__checkbox-category">
-                          Boys
-                        </div>
+                    <div className="subscribe__checkboxes">
+                        <Button buttonText="Women" />
+                        <Button buttonText="Men" />
+                        <Button buttonText="Girls" />
+                        <Button buttonText="Boys" />
                     </div>
-                    <form class="input-group">
-                        <label for="email" class="subscribe-text2">
-                            Email <br />
-                            <input class="email-input" type="text" id="email" placeholder="Your working email" />
-                            <button class="subscribe-button">
-                                Subscribe
-                            </button>
+                    <form className="subcribe__form" onSubmit={handleSubmit}>
+                        <label htmlFor="email" className="subscribe__text2">
+                            Email
                         </label>
+                        <br />
+                        <input className="subscribe__input" type="text" id="email" placeholder="Your working email" autoComplete='off' onChange={emailUpdate} />
+                        <button className="subscribe__button" type='submit'>
+                            Subscribe
+                        </button>
                     </form>
-                    <div class="subscribe__receive-communications subscribe__text2">
+                    <div className="subscribe__receive-communications subscribe__text2">
                         <input type="checkbox" name="checkbox" />
-                        I agree to receive communications from Createx Store.
+                        <span>
+                            I agree to receive communications from Createx Store.
+                        </span>
                     </div>
                 </div>
-                <div class="subscribe__messages">
+                <div className="subscribe__messages">
                     <img src={messages} alt="messages" />
                 </div>
             </div>
         </div>
-  )
+    )
 }
 
 export default Subscribe

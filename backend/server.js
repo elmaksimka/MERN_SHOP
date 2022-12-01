@@ -12,6 +12,7 @@ const InstagramImage = require('./models/instagramImageModel');
 const FashionBlog = require('./models/fashionBlogModel');
 const TrendingNow = require('./models/trendingNowModel');
 const Sale = require('./models/saleModel')
+const Email = require('./models/emailModel')
 
 connectDB();
 
@@ -66,6 +67,11 @@ app.get('/trendingnow', (req, res) => {
 
 app.get('/sales', (req, res) => {
   Sale.find({}).then(
+    items => res.json(items)).catch(err => console.log(err));
+});
+
+app.get('/emails', (req, res) => {
+  Email.find({}).then(
     items => res.json(items)).catch(err => console.log(err));
 });
 

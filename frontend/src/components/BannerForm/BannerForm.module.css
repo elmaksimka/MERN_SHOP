@@ -1,0 +1,73 @@
+.control {
+  margin-bottom: 0.5rem;
+}
+
+.control label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.control input {
+  border: 1px solid #ccc;
+  width: 20rem;
+  height: 4rem;
+  max-width: 100%;
+  padding-left: 1rem;
+  border-radius: 4px;
+}
+
+.actions button {
+  position: absolute;
+  bottom: 8px;
+  height: 4rem;
+  color: var(--primary);
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem 2rem;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #ffe6dc;
+}
+
+.actions .submit {
+  border: 1px solid var(--primary);;
+  background-color:  var(--primary);;
+  color: white;
+}
+
+.actions .submit:hover,
+.actions .submit:active {
+  background-color: var(--white);
+  color: var(--primary);
+}
+
+.invalid label {
+  color: #ca3e51;
+}
+
+.invalid input {
+  border-color: #aa0b20;
+  background-color: #ffeff1;
+}
+
+.success {
+  color: green;
+  animation: hideAnimation 0s ease-in 3s forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hideAnimation {
+  to {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+.error {
+  color: #aa0b20;
+}
