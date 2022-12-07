@@ -133,7 +133,6 @@ main {
     }
   }
 
-
   &__alternative {
     font-size: var(--size-s);
     line-height: 150%;
@@ -266,6 +265,7 @@ main {
 
       img {
         width: 20px;
+        height: 12px;
       }
     }
   }
@@ -1803,3 +1803,8 @@ main {
     margin-top: 1.5rem;
   }
 }
+
+button.dropdown-toggle.btn.btn-secondary {
+  background: var(--gray900);
+  border: none;
+} 

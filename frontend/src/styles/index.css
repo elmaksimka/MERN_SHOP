@@ -244,6 +244,7 @@ main {
 }
 .header .topbar__language img, .header .topbar__login img {
   width: 20px;
+  height: 12px;
 }
 .header .mainbar {
   height: 88px;
@@ -1513,4 +1514,9 @@ main {
   border: none;
   border-radius: 4px;
   margin-top: 1.5rem;
+}
+
+button.dropdown-toggle.btn.btn-secondary {
+  background: var(--gray900);
+  border: none;
 }/*# sourceMappingURL=index.css.map */

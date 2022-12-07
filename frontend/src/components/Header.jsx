@@ -2,16 +2,23 @@ import logo from '../img/logo.svg'
 import downChevron from '../img/down-chevron.svg'
 import search from '../img/search.svg'
 import flagUsa from '../img/flag-usa.svg'
+import flagUA from '../img/flag-ua.svg'
+import flagRus from '../img/flag-rus.png'
 import profile from '../img/profile.svg'
 import heart from '../img/heart.svg'
 import cart from '../img/cart.svg'
 import badge1 from '../img/badge1.svg'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-
 import { authorizingActions } from '../app/isAuthorizing-slice'
 
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { useState } from 'react'
+
 function Header() {
+    const [countryLang, setCountryLang] = useState('Eng / $');
     const favouriteCounter = useSelector(state => state.favourite.favouriteCounter);
     const cartCounter = useSelector(state => state.cart.cartCounter);
 
@@ -26,6 +33,18 @@ function Header() {
     }
 
     const { user } = useSelector((state) => state.auth);
+
+    const goToEngHandler = () => {
+        setCountryLang('Eng / $');
+    }
+
+    const goToUkrHandler = () => {
+        setCountryLang('Ukr / ₴');
+    }
+
+    const goToRusHandler = () => {
+        setCountryLang('Rus / ₽');
+    }
 
     return (
         <div className="header">
@@ -49,26 +68,40 @@ function Header() {
                         </NavLink>
                     </div>
                     <div className="topbar__language">
-                        <img className="topbar__img" src={flagUsa} alt="flag-usa" />
+                        <img className="topbar__img" src={countryLang === 'Eng / $' ? flagUsa : countryLang === 'Ukr / ₴' ? flagUA : countryLang === 'Rus / ₽' ? flagRus : flagUsa} alt="flag-usa" />
                         <div className="topbar__text">
-                            Eng / $
+                            {countryLang}
                         </div>
-                        <img src={downChevron} alt="down-chevron" />
+                        {['Secondary'].map(
+                            (variant) => (
+                                <DropdownButton
+                                    as={ButtonGroup}
+                                    key={variant}
+                                    id={`dropdown-variants-${variant}`}
+                                    variant={variant.toLowerCase()}
+                                    title=''
+                                >
+                                    <Dropdown.Item eventKey="1" onClick={goToEngHandler}>
+                                        <img src={flagUsa} alt="flag-usa" /> Eng / $
+                                    </Dropdown.Item>
+                                    <Dropdown.Divider />
+                                    <Dropdown.Item eventKey="2" onClick={goToUkrHandler}>
+                                        <img src={flagUA} alt="flag-ua" /> Ukr / ₴
+                                    </Dropdown.Item>
+                                    <Dropdown.Divider />
+                                    <Dropdown.Item eventKey="3" onClick={goToRusHandler}>
+                                        <img src={flagRus} alt="flag-rus" /> Rus / ₽
+                                    </Dropdown.Item>
+                                </DropdownButton>
+                            ),
+                        )}
+                        {/* <img src={downChevron} alt="down-chevron" /> */}
                     </div>
                     <div className="topbar__login">
                         <div className="topbar__login__item">
                             {!user ? (
                                 <>
                                     <img className="topbar__img" src={profile} alt="profile" />
-                                    {/* <NavLink to='/login' className="topbar__text" onClick={showLoginModalHandler}>
-                                Log in
-                            </NavLink>
-                            <span>
-                                /
-                            </span>
-                            <NavLink to='/register' className="topbar__text" onClick={showRegisterModalHandler}>
-                                Register
-                            </NavLink> */}
                                     <span className="topbar__text" onClick={showLoginModalHandler}>
                                         Log in
                                     </span>
@@ -81,7 +114,7 @@ function Header() {
                                 </>) : (
                                 <>
                                     <span>
-                                        Hello, 
+                                        Hello,
                                     </span>
                                     <NavLink to='/account'>
                                         {user.name}
