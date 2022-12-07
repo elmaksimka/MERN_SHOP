@@ -1,5 +1,4 @@
 import logo from '../img/logo.svg'
-import downChevron from '../img/down-chevron.svg'
 import search from '../img/search.svg'
 import flagUsa from '../img/flag-usa.svg'
 import flagUA from '../img/flag-ua.svg'
@@ -18,7 +17,21 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { useState } from 'react'
 
 function Header() {
-    const [countryLang, setCountryLang] = useState('Eng / $');
+    const ENG = 'Eng / $', UA = 'Ukr / ₴', RUS = 'Rus / ₽';
+    const [countryLang, setCountryLang] = useState(ENG);
+
+    const goToEngHandler = () => {
+        setCountryLang(ENG);
+    }
+
+    const goToUkrHandler = () => {
+        setCountryLang(UA);
+    }
+
+    const goToRusHandler = () => {
+        setCountryLang(RUS);
+    }
+
     const favouriteCounter = useSelector(state => state.favourite.favouriteCounter);
     const cartCounter = useSelector(state => state.cart.cartCounter);
 
@@ -33,18 +46,6 @@ function Header() {
     }
 
     const { user } = useSelector((state) => state.auth);
-
-    const goToEngHandler = () => {
-        setCountryLang('Eng / $');
-    }
-
-    const goToUkrHandler = () => {
-        setCountryLang('Ukr / ₴');
-    }
-
-    const goToRusHandler = () => {
-        setCountryLang('Rus / ₽');
-    }
 
     return (
         <div className="header">
@@ -68,7 +69,7 @@ function Header() {
                         </NavLink>
                     </div>
                     <div className="topbar__language">
-                        <img className="topbar__img" src={countryLang === 'Eng / $' ? flagUsa : countryLang === 'Ukr / ₴' ? flagUA : countryLang === 'Rus / ₽' ? flagRus : flagUsa} alt="flag-usa" />
+                        <img className="topbar__img" src={countryLang === ENG ? flagUsa : countryLang === UA ? flagUA : countryLang === RUS ? flagRus : flagUsa} alt="flag" />
                         <div className="topbar__text">
                             {countryLang}
                         </div>
@@ -79,23 +80,21 @@ function Header() {
                                     key={variant}
                                     id={`dropdown-variants-${variant}`}
                                     variant={variant.toLowerCase()}
-                                    title=''
                                 >
                                     <Dropdown.Item eventKey="1" onClick={goToEngHandler}>
-                                        <img src={flagUsa} alt="flag-usa" /> Eng / $
+                                        <img src={flagUsa} alt="flag-usa" /> {ENG}
                                     </Dropdown.Item>
                                     <Dropdown.Divider />
                                     <Dropdown.Item eventKey="2" onClick={goToUkrHandler}>
-                                        <img src={flagUA} alt="flag-ua" /> Ukr / ₴
+                                        <img src={flagUA} alt="flag-ua" /> {UA}
                                     </Dropdown.Item>
                                     <Dropdown.Divider />
                                     <Dropdown.Item eventKey="3" onClick={goToRusHandler}>
-                                        <img src={flagRus} alt="flag-rus" /> Rus / ₽
+                                        <img src={flagRus} alt="flag-rus" /> {RUS}
                                     </Dropdown.Item>
                                 </DropdownButton>
                             ),
                         )}
-                        {/* <img src={downChevron} alt="down-chevron" /> */}
                     </div>
                     <div className="topbar__login">
                         <div className="topbar__login__item">
