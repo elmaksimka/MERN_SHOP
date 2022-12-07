@@ -4,9 +4,20 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { login, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
-import { Link } from 'react-router-dom'
+import Modal from './UI/Modal'
+import { authorizingActions } from '../app/isAuthorizing-slice'
+import eye from '../img/eyes.svg'
 
-function SignIn() {
+function SignIn(props) {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const showPasswordHandler = () => {
+    setShowPassword(!showPassword);
+  }
+
+  let passwordInputType;
+  showPassword ? passwordInputType = 'text' : passwordInputType = 'password';
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -48,6 +59,7 @@ function SignIn() {
       password,
     }
 
+    dispatch(authorizingActions.reset())
     dispatch(login(userData))
   }
 
@@ -55,41 +67,55 @@ function SignIn() {
     return <Spinner />
   }
 
+  const moveToRegisterHandler = () => {
+    dispatch(authorizingActions.registering())
+  }
+
   return (
-    <div className='signinup-container'>
-      <div className='signinup-container__content'>
-        <h3>
+    <Modal onClose={props.onClose}>
+      <div className='signinup__container'>
+        <h3 className='signinup__title'>
           Sign in
         </h3>
-        <p>
+        <p className="signinup__info">
           Sign in to your account using email and password provided during registration.
         </p>
-        <form className='signinup-container__content__form' onSubmit={onSubmit}>
-          <label htmlFor="label">
-            Email
-          </label>
-          <input type="email" id="email" name="email" placeholder="Your working email" value={email} onChange={onChange} />
-          <label htmlFor="label">
-            Password
-          </label>
-          <input type="password" id='password'
-            name='password' placeholder="************" value={password} onChange={onChange} />
-          <div>
-            <input type="checkbox" />Keep me signed in
-            <span>Forgot password?</span>
+        <form className='signinup__form' onSubmit={onSubmit}>
+          <div className="signinup__control">
+            <label htmlFor="email" className="signinup__label">
+              Email
+            </label>
+            <input type='email' id="email" name="email" autoComplete="off" placeholder="Your working email" className="signinup__input" value={email} onChange={onChange} />
           </div>
-          <button type="submit">Sign in</button>
+          <div className="signinup__control">
+            <label htmlFor="password" className="signinup__label">
+              Password
+            </label>
+            <input type={passwordInputType} id='password'
+              name='password' placeholder="* * * * * * * * * *" className="signinup__input" value={password} onChange={onChange} />
+            <img src={eye} alt="show" onClick={showPasswordHandler} />
+          </div>
+          <div className="signinup__options">
+            <input type="checkbox" />
+            <label htmlFor="keepMeSignIn">
+              Keep me signed in
+            </label>
+            <span>
+              Forgot password?
+            </span>
+          </div>
+          <button type="submit" className="signinup__button">
+            Sign in
+          </button>
         </form>
         <p>
           Don't have an account?
-          <span style={{ color: '#17696A' }}>
-            <Link to='/register'>
-              Sign up
-            </Link>
+          <span className="signinup__goto" onClick={moveToRegisterHandler}>
+            Sign up
           </span>
         </p>
-        <div className='signinup-container__content__socials'>
-          <p>
+        <div className='signinup__socials'>
+          <p className="signinup__alternative">
             Or sign in with
           </p>
           <p>
@@ -97,7 +123,7 @@ function SignIn() {
           </p>
         </div>
       </div>
-    </div>
+    </Modal>
   )
 }
 

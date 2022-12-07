@@ -11,8 +11,8 @@ const PopularCategory = require('./models/popularCategoryModel');
 const InstagramImage = require('./models/instagramImageModel');
 const FashionBlog = require('./models/fashionBlogModel');
 const TrendingNow = require('./models/trendingNowModel');
-const Sale = require('./models/saleModel')
-const Email = require('./models/emailModel')
+const Sale = require('./models/saleModel');
+const Email = require('./models/emailModel');
 
 connectDB();
 
@@ -22,63 +22,70 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 
-// // Serve frontend
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.join(__dirname, '../frontend/build')));
-
-//   app.get('*', (req, res) =>
-//     res.sendFile(
-//       path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')
-//     )
-//   );
-// } else {
-//   app.get('/', (req, res) => res.send('Please set to production'));
-// }
-
 app.get('/categories', (req, res) => {
-  Category.find({}).then(
-    items => res.json(items)).catch(err => console.log(err));
+  Category.find({})
+    .then((items) => res.json(items))
+    .catch((err) => console.log(err));
 });
 
 app.get('/newarrivals', (req, res) => {
-  NewArrival.find({}).then(
-    items => res.json(items)).catch(err => console.log(err));
+  NewArrival.find({})
+    .then((items) => res.json(items))
+    .catch((err) => console.log(err));
 });
 
 app.get('/popularcategories', (req, res) => {
-  PopularCategory.find({}).then(
-    items => res.json(items)).catch(err => console.log(err));
+  PopularCategory.find({})
+    .then((items) => res.json(items))
+    .catch((err) => console.log(err));
 });
 
 app.get('/instagramimages', (req, res) => {
-  InstagramImage.find({}).then(
-    items => res.json(items)).catch(err => console.log(err));
+  InstagramImage.find({})
+    .then((items) => res.json(items))
+    .catch((err) => console.log(err));
 });
 
 app.get('/fashionblogs', (req, res) => {
-  FashionBlog.find({}).then(
-    items => res.json(items)).catch(err => console.log(err));
+  FashionBlog.find({})
+    .then((items) => res.json(items))
+    .catch((err) => console.log(err));
 });
 
 app.get('/trendingnow', (req, res) => {
-  TrendingNow.find({}).then(
-    items => res.json(items)).catch(err => console.log(err));
+  TrendingNow.find({})
+    .then((items) => res.json(items))
+    .catch((err) => console.log(err));
 });
 
 app.get('/sales', (req, res) => {
-  Sale.find({}).then(
-    items => res.json(items)).catch(err => console.log(err));
+  Sale.find({})
+    .then((items) => res.json(items))
+    .catch((err) => console.log(err));
 });
 
 app.get('/emails', (req, res) => {
-  Email.find({}).then(
-    items => res.json(items)).catch(err => console.log(err));
+  Email.find({})
+    .then((items) => res.json(items))
+    .catch((err) => console.log(err));
 });
 
-app.use('/api/orders', require('./routes/orderRoutes'));
+// app.use('/api/orders', require('./routes/orderRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 
-app.use('/api/categories', require('./routes/categoryRoutes'))
+// app.use('/api/categories', require('./routes/categoryRoutes'))
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')
+    )
+  );
+} else {
+  app.get('/', (req, res) => res.send('Please set to production'));
+}
 
 app.use(errorHandler);
 

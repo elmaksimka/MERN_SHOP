@@ -9,9 +9,23 @@ import badge1 from '../img/badge1.svg'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { authorizingActions } from '../app/isAuthorizing-slice'
+
 function Header() {
     const favouriteCounter = useSelector(state => state.favourite.favouriteCounter);
     const cartCounter = useSelector(state => state.cart.cartCounter);
+
+    const dispatch = useDispatch();
+
+    const showLoginModalHandler = () => {
+        dispatch(authorizingActions.loggingIn());
+    }
+
+    const showRegisterModalHandler = () => {
+        dispatch(authorizingActions.registering());
+    }
+
+    const { user } = useSelector((state) => state.auth);
 
     return (
         <div className="header">
@@ -42,17 +56,38 @@ function Header() {
                         <img src={downChevron} alt="down-chevron" />
                     </div>
                     <div className="topbar__login">
-                        <img className="topbar__img" src={profile} alt="profile" />
                         <div className="topbar__login__item">
-                            <NavLink to='/login' className="topbar__text">
+                            {!user ? (
+                                <>
+                                    <img className="topbar__img" src={profile} alt="profile" />
+                                    {/* <NavLink to='/login' className="topbar__text" onClick={showLoginModalHandler}>
                                 Log in
                             </NavLink>
                             <span>
                                 /
                             </span>
-                            <NavLink to='/register' className="topbar__text">
+                            <NavLink to='/register' className="topbar__text" onClick={showRegisterModalHandler}>
                                 Register
-                            </NavLink>
+                            </NavLink> */}
+                                    <span className="topbar__text" onClick={showLoginModalHandler}>
+                                        Log in
+                                    </span>
+                                    <span>
+                                        /
+                                    </span>
+                                    <span className="topbar__text" onClick={showRegisterModalHandler}>
+                                        Register
+                                    </span>
+                                </>) : (
+                                <>
+                                    <span>
+                                        Hello, 
+                                    </span>
+                                    <NavLink to='/account'>
+                                        {user.name}
+                                    </NavLink>!
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -102,7 +137,7 @@ function Header() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

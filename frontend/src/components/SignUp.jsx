@@ -4,9 +4,20 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { register, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
-import { Link } from 'react-router-dom'
+import Modal from './UI/Modal'
+import { authorizingActions } from '../app/isAuthorizing-slice'
+import eye from '../img/eyes.svg'
 
-function SignUp() {
+function SignUp(props) {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const showPasswordHandler = () => {
+    setShowPassword(!showPassword);
+  }
+
+  let passwordInputType;
+  showPassword ? passwordInputType = 'text' : passwordInputType = 'password';
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -47,6 +58,8 @@ function SignUp() {
 
     if (password !== password2) {
       toast.error('Passwords do not match')
+    } else if (!name.includes(' ')) {
+      toast.error('Enter valid Full Name')
     } else {
       const userData = {
         name,
@@ -55,6 +68,7 @@ function SignUp() {
       }
 
       dispatch(register(userData))
+      dispatch(authorizingActions.loggingIn())
     }
   }
 
@@ -62,49 +76,66 @@ function SignUp() {
     return <Spinner />
   }
 
+  const moveToLoginHandler = () => {
+    dispatch(authorizingActions.loggingIn())
+  }
+
   return (
-    <div className='signinup-container'>
-      <div className='signinup-container__content'>
-        <h3>
+    <Modal onClose={props.onClose}>
+      <div className='signinup__container'>
+        <h3 className='signinup__title'>
           Sign up
         </h3>
-        <p>
+        <p className="signinup__info">
           Registration takes less than a minute but gives you full control over your orders.
         </p>
-        <form className='signinup-container__content__form' onSubmit={onSubmit}>
-          <label htmlFor="label">
-            Full Name
-          </label>
-          <input type="text" id="name" name="name" placeholder="Your full name" value={name} onChange={onChange} />
-          <label htmlFor="label">
-            Email
-          </label>
-          <input type="email" id="email" name="email" placeholder="Your working email" value={email} onChange={onChange} />
-          <label htmlFor="label">
-            Password
-          </label>
-          <input type="password" id='password'
-            name='password' placeholder="************" value={password} onChange={onChange} />
-          <label htmlFor="label">
-            Confirm Password
-          </label>
-          <input type="password" id='password2'
-            name='password2' placeholder="************" value={password2} onChange={onChange} />
-          <div>
-            <input type="checkbox" />Remember me
+        <form className='signinup__form' onSubmit={onSubmit}>
+          <div className="signinup__control">
+            <label htmlFor="name" className="signinup__label">
+              Full Name (e.g. John Cena) 
+            </label>
+            <input type="text" id="name" name="name" autoComplete="off" placeholder="Your full name" className="signinup__input" value={name} onChange={onChange} />
           </div>
-          <button type="submit">Sign in</button>
+          <div className="signinup__control">
+            <label htmlFor="email" className="signinup__label">
+              Email
+            </label>
+            <input type="email" id="email" name="email" autoComplete="off" placeholder="Your working email" className="signinup__input" value={email} onChange={onChange} />
+          </div>
+          <div className="signinup__control">
+            <label htmlFor="password1" className="signinup__label">
+              Password
+            </label>
+            <input type={passwordInputType} id='password'
+              name='password' placeholder="* * * * * * * * * *" className="signinup__input" value={password} onChange={onChange} />
+            <img src={eye} alt="show" onClick={showPasswordHandler} />
+          </div>
+          <div className="signinup__control">
+            <label htmlFor="password2" className="signinup__label">
+              Confirm Password
+            </label>
+            <input type={passwordInputType} id='password2'
+              name='password2' placeholder="* * * * * * * * * *" className="signinup__input" value={password2} onChange={onChange} />
+            <img src={eye} alt="show" onClick={showPasswordHandler} />
+          </div>
+          <div className="signinup__options">
+            <input type="checkbox" />
+            <label htmlFor="rememberMe">
+              Remember me
+            </label>
+          </div>
+          <button type="submit" className="signinup__button">
+            Sign in
+          </button>
         </form>
         <p>
           Already have an account?
-          <span style={{ color: '#17696A' }}>
-            <Link to='/login'>
-              Sign in
-            </Link>
+          <span className="signinup__goto" onClick={moveToLoginHandler}>
+            Sign in
           </span>
         </p>
-        <div className='signinup-container__content__socials'>
-          <p>
+        <div className='signinup__socials'>
+          <p className="signinup__alternative">
             Or sign in with
           </p>
           <p>
@@ -112,7 +143,7 @@ function SignUp() {
           </p>
         </div>
       </div>
-    </div>
+    </Modal>
   )
 }
 
