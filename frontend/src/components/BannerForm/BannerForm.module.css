@@ -26,6 +26,7 @@
   background-color: transparent;
   border: none;
   padding: 0.5rem 2rem;
+  transition: all .5s;
 }
 
 .actions button:hover,

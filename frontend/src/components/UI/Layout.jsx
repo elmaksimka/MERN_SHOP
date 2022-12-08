@@ -1,6 +1,6 @@
-import CarouselLine from "../components/CarouselLine";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import CarouselLine from "../CarouselLine";
+import Footer from "./Footer";
+import Header from "./Header";
 
 
 const Layout = (props) => {

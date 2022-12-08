@@ -1,20 +1,18 @@
-import logo from '../img/logo.svg'
-import search from '../img/search.svg'
-import flagUsa from '../img/flag-usa.svg'
-import flagUA from '../img/flag-ua.svg'
-import flagRus from '../img/flag-rus.png'
-import profile from '../img/profile.svg'
-import heart from '../img/heart.svg'
-import cart from '../img/cart.svg'
-import badge1 from '../img/badge1.svg'
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { authorizingActions } from '../app/isAuthorizing-slice'
-
+import { authorizingActions } from '../../app/isAuthorizing-slice'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import { useState } from 'react'
+import logo from '../../img/logo.svg'
+import search from '../../img/search.svg'
+import flagUsa from '../../img/flag-usa.svg'
+import flagUA from '../../img/flag-ua.svg'
+import flagRus from '../../img/flag-rus.png'
+import profile from '../../img/profile.svg'
+import heart from '../../img/heart.svg'
+import cart from '../../img/cart.svg'
+import badge1 from '../../img/badge1.svg'
 
 function Header() {
     const ENG = 'Eng / $', UA = 'Ukr / ₴', RUS = 'Rus / ₽';
@@ -73,28 +71,21 @@ function Header() {
                         <div className="topbar__text">
                             {countryLang}
                         </div>
-                        {['Secondary'].map(
-                            (variant) => (
-                                <DropdownButton
-                                    as={ButtonGroup}
-                                    key={variant}
-                                    id={`dropdown-variants-${variant}`}
-                                    variant={variant.toLowerCase()}
-                                >
-                                    <Dropdown.Item eventKey="1" onClick={goToEngHandler}>
-                                        <img src={flagUsa} alt="flag-usa" /> {ENG}
-                                    </Dropdown.Item>
-                                    <Dropdown.Divider />
-                                    <Dropdown.Item eventKey="2" onClick={goToUkrHandler}>
-                                        <img src={flagUA} alt="flag-ua" /> {UA}
-                                    </Dropdown.Item>
-                                    <Dropdown.Divider />
-                                    <Dropdown.Item eventKey="3" onClick={goToRusHandler}>
-                                        <img src={flagRus} alt="flag-rus" /> {RUS}
-                                    </Dropdown.Item>
-                                </DropdownButton>
-                            ),
-                        )}
+                        <DropdownButton
+                            title=''
+                        >
+                            <Dropdown.Item onClick={goToEngHandler}>
+                                <img src={flagUsa} alt="flag-usa" /> {ENG}
+                            </Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item onClick={goToUkrHandler}>
+                                <img src={flagUA} alt="flag-ua" /> {UA}
+                            </Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item onClick={goToRusHandler}>
+                                <img src={flagRus} alt="flag-rus" /> {RUS}
+                            </Dropdown.Item>
+                        </DropdownButton>
                     </div>
                     <div className="topbar__login">
                         <div className="topbar__login__item">

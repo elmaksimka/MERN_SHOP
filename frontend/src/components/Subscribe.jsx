@@ -47,12 +47,12 @@ function Subscribe() {
                         <Button buttonText="Girls" />
                         <Button buttonText="Boys" />
                     </div>
-                    <form className="subcribe__form" onSubmit={handleSubmit}>
+                    <form className="subscribe__form" onSubmit={handleSubmit}>
                         <label htmlFor="email" className="subscribe__text2">
                             Email
                         </label>
                         <br />
-                        <input className="subscribe__input" type="text" id="email" placeholder="Your working email" autoComplete='off' onChange={emailUpdate} />
+                        <input className="subscribe__input" type="text" placeholder="Your working email" autoComplete='off' onChange={emailUpdate} />
                         <button className="subscribe__button" type='submit'>
                             Subscribe
                         </button>

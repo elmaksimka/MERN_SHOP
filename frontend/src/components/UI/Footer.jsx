@@ -1,11 +1,11 @@
-import facebook from '../img/facebook.svg'
-import instagram from '../img/instagram.svg'
-import twitter from '../img/twitter.svg'
-import youtube from '../img/youtube.svg'
-import pinterest from '../img/pinterest.svg'
-import googlePlay from '../img/google-play.svg'
-import appStore from '../img/app-store.svg'
-import heart from '../img/heart.svg'
+import facebook from '../../img/facebook.svg'
+import instagram from '../../img/instagram.svg'
+import twitter from '../../img/twitter.svg'
+import youtube from '../../img/youtube.svg'
+import pinterest from '../../img/pinterest.svg'
+import googlePlay from '../../img/google-play.svg'
+import appStore from '../../img/app-store.svg'
+import heart from '../../img/heart.svg'
 import { Link } from 'react-router-dom'
 
 
@@ -16,71 +16,71 @@ function Footer() {
                 <div className="footer__content">
                     <div className="footer__categories">
                         <div className="footer__help">
-                            <div className="footer__text-white">
+                            <div className="footer__text_white">
                                 Help
                             </div>
                             <Link to='/deliveryreturns'>
-                                <div className="footer__text-graywhite">
+                                <div className="footer__text_graywhite">
                                     Delivery and returns
                                 </div>
                             </Link>
                             <Link to='/faq'>
-                                <div className="footer__text-graywhite">
+                                <div className="footer__text_graywhite">
                                     FAQ
                                 </div>
                             </Link>
                             <Link to='/trackorder'>
-                                <div className="footer__text-graywhite">
+                                <div className="footer__text_graywhite">
                                     Track order
                                 </div>
                             </Link>
                             <Link to='/contacts'>
-                                <div className="footer__text-graywhite">
+                                <div className="footer__text_graywhite">
                                     Contacts
                                 </div>
                             </Link>
                             <Link to='/blog'>
-                                <div className="footer__text-graywhite">
+                                <div className="footer__text_graywhite">
                                     Blog
                                 </div>
                             </Link>
                         </div>
                         <div className="footer__shop">
-                            <div className="footer__text-white">
+                            <div className="footer__text_white">
                                 Shop
                             </div>
                             <Link to='/newarrivals'>
-                                <div className="footer__text-graywhite">
+                                <div className="footer__text_graywhite">
                                     New arrivals
                                 </div>
                             </Link>
                             <Link to='/trendingnow'>
-                                <div className="footer__text-graywhite">
+                                <div className="footer__text_graywhite">
                                     Trending now
                                 </div>
                             </Link>
                             <Link to='/sales'>
-                                <div className="footer__text-graywhite">
+                                <div className="footer__text_graywhite">
                                     Sales
                                 </div>
                             </Link>
                             <Link to='/brands'>
-                                <div className="footer__text-graywhite">
+                                <div className="footer__text_graywhite">
                                     Brands
                                 </div>
                             </Link>
                         </div>
                         <div className="footer__get-in-touch">
-                            <div className="footer__text-white">
+                            <div className="footer__text_white">
                                 Get in touch
                             </div>
-                            <div className="footer__text-call">
+                            <div className="footer__text_call">
                                 Call:
                                 <span className="footer__call">
                                     (405) 555-0128
                                 </span>
                             </div>
-                            <div className="footer__text-email">
+                            <div className="footer__text_email">
                                 Email:
                                 <span className="footer__email">
                                     hello@createx.com

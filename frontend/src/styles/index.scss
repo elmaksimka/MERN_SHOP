@@ -23,6 +23,7 @@ h1 {
 main {
   position: relative;
   overflow: hidden;
+  margin-top: -7.5rem;
 }
 
 .signinup {
@@ -154,8 +155,8 @@ main {
 }
 
 .loading-spinner {
-  width: 64px;
-  height: 64px;
+  width: 4rem;
+  height: 4rem;
   border: 8px solid;
   border-color: #000 transparent #555 transparent;
   border-radius: 50%;
@@ -187,8 +188,8 @@ main {
 
 .header {
   width: 100%;
-  height: 124px;
-  // position: fixed;
+  height: 7.5rem;
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -201,7 +202,7 @@ main {
     background-color: var(--gray900);
 
     &__content {
-      width: 1920px;
+      width: 120rem;
       display: flex;
       justify-content: space-evenly;
     }
@@ -264,21 +265,21 @@ main {
       }
 
       img {
-        width: 20px;
-        height: 12px;
+        width: 1.25rem;
+        height: 0.75rem;
       }
     }
   }
 
   .mainbar {
-    height: 88px;
+    height: 5.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--white);
 
     &__content {
-      width: 1920px;
+      width: 120rem;
       height: 100%;
       display: flex;
       justify-content: space-evenly;
@@ -335,8 +336,8 @@ main {
       align-items: center;
 
       input {
-        width: 380px;
-        height: 44px;
+        width: 24rem;
+        height: 3rem;
       }
 
       img {
@@ -349,13 +350,13 @@ main {
 }
 
 .carousel {
-  height: 34px;
+  height: 2rem;
   display: flex;
   justify-content: center;
-  // padding-top: 124px;
+  padding-top: 7.5rem;
 
   &__content {
-    width: 1920px;
+    width: 120rem;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -379,13 +380,13 @@ main {
 }
 
 .hero-slider {
-  height: 800px;
+  height: 50rem;
   position: relative;
   display: flex;
 
   &__content {
-    width: 1920px;
-    height: 800px;
+    width: 120rem;
+    height: 100%;
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -393,8 +394,6 @@ main {
   }
 
   &__caption {
-    width: 550px;
-    height: 250px;
     position: absolute;
     top: 200px;
     left: 200px;
@@ -437,7 +436,7 @@ main {
 
   &__button-sale,
   &__button-menswear {
-    height: 52px;
+    height: 4rem;
     font-weight: var(--font-bold);
     letter-spacing: 0.5px;
     line-height: 52px;
@@ -446,65 +445,16 @@ main {
   }
 
   &__button-sale {
-    width: 144px;
+    width: 9rem;
     color: var(--primary);
     background-color: transparent;
     margin-right: 20px;
   }
 
   &__button-menswear {
-    width: 230px;
+    width: 14rem;
     background-color: var(--primary);
     color: var(--white);
-  }
-
-  &__numbers {
-    width: 800px;
-    height: 50px;
-    position: absolute;
-    top: 500px;
-    left: 170px;
-    display: flex;
-    justify-content: space-evenly;
-  }
-
-  &__first-group,
-  &__second-group,
-  &__third-group,
-  &__fourth-group {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__first-line,
-  &__second-line,
-  &__third-line,
-  &__fourth-line {
-    width: 150px;
-    height: 0px;
-    background-color: var(--gray800);
-    border: 2px solid;
-  }
-
-  &__second-line,
-  &__third-line,
-  &__fourth-line {
-    opacity: 0.3;
-  }
-
-  &__number-one,
-  &__number-two,
-  &__number-three,
-  &__number-four {
-    font-size: var(--size-xl);
-    font-weight: var(--font-bold);
-    line-height: 150%;
-  }
-
-  &__number-two,
-  &__number-three,
-  &__number-four {
-    opacity: 0.6;
   }
 }
 
@@ -517,12 +467,12 @@ main {
 }
 
 .top-categories {
-  height: 425px;
+  height: 27rem;
   display: flex;
   justify-content: center;
 
   &__content {
-    width: 1920px;
+    width: 120rem;
     padding: 0 250px;
     position: absolute;
     display: flex;
@@ -553,8 +503,8 @@ main {
   justify-content: space-evenly;
 
   &__content {
-    width: 1920px;
-    height: 1000px;
+    width: 120rem;
+    height: 63rem;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -580,7 +530,7 @@ main {
 
   &__products {
     width: 100%;
-    height: 437px;
+    height: 28rem;
     display: flex;
     justify-content: space-evenly;
     padding: 0 250px;
@@ -590,22 +540,22 @@ main {
       margin: 0 10px;
 
       &__img {
-        width: 246px;
-        height: 320px;
+        width: 16rem;
+        height: 20rem;
       }
     }
   }
 
   &__heart {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
     position: absolute;
     right: 16px;
     bottom: 150px;
 
     &_active {
-      width: 16px;
-      height: 16px;
+      width: 1rem;
+      height: 1rem;
       position: absolute;
       right: 16px;
       bottom: 150px;
@@ -675,7 +625,7 @@ main {
 }
 
 .banners {
-  width: 1920px;
+  width: 120rem;
   margin: auto;
 
   &__banner-first-content,
@@ -687,7 +637,7 @@ main {
 
   &__image-content {
     width: auto;
-    height: 300px;
+    height: 19rem;
     position: absolute;
     top: 50px;
     left: 50px;
@@ -696,7 +646,7 @@ main {
     justify-content: space-between;
 
     &_s {
-      height: 200px;
+      height: 12.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
@@ -720,7 +670,7 @@ main {
   }
 
   &__banner-text2 {
-    width: 362px;
+    width: 22rem;
     font-size: var(--size-32px);
     font-weight: var(--font-black);
     line-height: 130%;
@@ -729,7 +679,7 @@ main {
 
   &__banner-time {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 
   &__banner-time-text {
@@ -745,8 +695,8 @@ main {
   }
 
   &__banner-button {
-    width: 200px;
-    height: 44px;
+    width: 12.5rem;
+    height: 3rem;
     font-size: var(--size-s);
     letter-spacing: 0.5px;
     background-color: transparent;
@@ -755,7 +705,7 @@ main {
     border-radius: 4px;
 
     &_btn_s {
-      width: 120px;
+      width: 7.5rem;
     }
   }
 
@@ -768,12 +718,12 @@ main {
 
   &__banner-1,
   &__banner-4 {
-    width: 735px;
+    width: 46rem;
   }
 
   &__banner-2,
   &__banner-3 {
-    width: 1110px;
+    width: 69.5rem;
   }
 
   &__banner-1,
@@ -785,40 +735,17 @@ main {
   &__banner-2 {
     margin-bottom: 10px;
   }
-
-  &__banners-4 {
-    .input-group {
-      &:extends(.subscribe__input-group) {
-        z-index: 1;
-      }
-
-      .email-input {
-        width: 260px;
-        height: 44px;
-      }
-    }
-
-    .banners__banner-image-content {
-      position: absolute;
-      left: 50px;
-    }
-
-    .subscribe-text {
-      width: 400px;
-      z-index: 1;
-    }
-  }
 }
 
 .popular-categories {
-  height: 400px;
+  height: 40rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   &__content {
-    width: 1920px;
+    width: 120rem;
     display: flex;
     flex-direction: column;
   }
@@ -831,8 +758,8 @@ main {
     div {
       margin: 0 10px;
       img {
-        width: 180px;
-        height: 300px;
+        width: 11rem;
+        height: 19rem;
       }
     }
   }
@@ -847,13 +774,13 @@ main {
 }
 
 .trending-now {
-  height: 950px;
+  height: 60rem;
   display: flex;
   justify-content: center;
   align-items: center;
 
   &__content {
-    width: 1920px;
+    width: 120rem;
     height: 100%;
     position: relative;
     background-color: var(--gray300);
@@ -886,9 +813,9 @@ main {
       }
 
       a {
-        padding: 10px;
-        margin: 8px;
-        border-radius: 55px;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        border-radius: 4rem;
         color: var(--primary);
         cursor: pointer;
 
@@ -912,11 +839,11 @@ main {
 
   &__product {
     position: relative;
-    margin-right: 20px;
+    margin-right: 1.25rem;
 
     img {
-      width: 390px;
-      height: 440px;
+      width: 24.5rem;
+      height: 27.5rem;
     }
   }
 
@@ -943,14 +870,14 @@ main {
 
   &__btn {
     width: 100%;
-    height: 200px;
+    height: 12.5rem;
     display: flex;
     justify-content: center;
   }
 
   &__button {
-    width: 250px;
-    height: 52px;
+    width: 15.5rem;
+    height: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -963,32 +890,32 @@ main {
   }
 
   &__heart {
-    width: 16px !important;
-    height: 16px !important;
+    width: 1rem !important;
+    height: 1rem !important;
     position: absolute;
     right: 16px;
     bottom: 150px;
 
     &_active {
-      width: 16px !important;
-      height: 16px !important;
+      width: 1rem !important;
+      height: 1rem !important;
       position: absolute;
       right: 16px;
       bottom: 150px;
       background: red;
-      border-radius: 44px;
+      border-radius: 3rem;
     }
   }
 }
 
 .sale {
-  height: 950px;
+  height: 60rem;
   display: flex;
   justify-content: center;
   align-items: center;
 
   &__content {
-    width: 1920px;
+    width: 120rem;
     height: 100%;
     position: relative;
   }
@@ -1020,9 +947,9 @@ main {
       }
 
       a {
-        padding: 10px;
-        margin: 8px;
-        border-radius: 55px;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        border-radius: 4rem;
         color: var(--primary);
         cursor: pointer;
 
@@ -1045,13 +972,13 @@ main {
   }
 
   &__product {
-    height: 500px;
+    height: 31rem;
     position: relative;
     margin-right: 20px;
 
     &__img {
-      width: 390px;
-      height: 440px;
+      width: 24.5rem;
+      height: 27.5rem;
     }
   }
 
@@ -1093,14 +1020,14 @@ main {
 
   &__btn {
     width: 100%;
-    height: 200px;
+    height: 12.5rem;
     display: flex;
     justify-content: center;
   }
 
   &__button {
-    width: 250px;
-    height: 52px;
+    width: 16rem;
+    height: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1118,8 +1045,8 @@ main {
     bottom: 100px;
 
     img {
-      width: 16px;
-      height: 16px;
+      width: 1rem;
+      height: 1rem;
     }
   }
 
@@ -1176,14 +1103,14 @@ main {
 }
 
 .cta-mobile-app {
-  height: 330px;
+  height: 21rem;
   position: relative;
   display: flex;
   justify-content: center;
 
   &__content {
     position: relative;
-    width: 1920px;
+    width: 120rem;
     height: 100%;
     display: flex;
     justify-content: space-around;
@@ -1191,7 +1118,7 @@ main {
   }
 
   &__shopping {
-    height: 350px;
+    height: 22rem;
     position: absolute;
     top: -30px;
     left: 170px;
@@ -1221,12 +1148,12 @@ main {
 }
 
 .services {
-  height: 236px;
+  height: 15rem;
   display: flex;
   justify-content: center;
 
   &__content {
-    width: 1920px;
+    width: 120rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -1247,7 +1174,7 @@ main {
   }
 
   img {
-    margin-left: 90px;
+    margin-left: 5rem;
   }
 }
 
@@ -1255,17 +1182,17 @@ main {
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 6rem;
 
   &__content {
-    width: 1920px;
-    height: 270px;
+    width: 120rem;
+    height: 17rem;
     position: relative;
     display: flex;
   }
 
   &__text {
-    margin: 0 20px;
+    margin: 0 2rem;
   }
 
   &__follow-text {
@@ -1292,8 +1219,8 @@ main {
   }
 
   &__button {
-    width: 250px;
-    height: 52px;
+    width: 15.5rem;
+    height: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1304,24 +1231,25 @@ main {
     color: var(--primary);
     border: 1px solid var(--primary);
     border-radius: 4px;
+    transition: 2s;
 
     &:hover {
       background-color: var(--primary);
       color: var(--white);
-      transition: 0.7s;
+      transition: 1s;
       transform: rotate(360deg);
     }
   }
 }
 
 .blog {
-  margin-top: 200px;
-  height: 602px;
+  margin-top: 12.5rem;
+  height: 38rem;
   display: flex;
   justify-content: center;
 
   &__content {
-    width: 1920px;
+    width: 120rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -1353,17 +1281,17 @@ main {
   }
 
   &__images {
+    width: 77rem;
+    height: 26rem;
     display: flex;
     justify-content: center;
-    width: 1230px;
-    height: 420px;
-    margin-top: 100px;
-    margin-right: 220px;
+    margin-top: 6rem;
+    margin-right: 14rem;
   }
 
   &__image {
-    width: 600px;
-    height: 480px;
+    width: 38rem;
+    height: 30rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -1376,7 +1304,7 @@ main {
     }
 
     &__text1 {
-      width: 400px;
+      width: 25rem;
       display: flex;
       justify-content: space-between;
     }
@@ -1396,13 +1324,13 @@ main {
 .logos {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 150px;
-  margin-bottom: 150px;
+  margin-top: 9.5rem;
+  margin-bottom: 9.5rem;
 
   &__content {
     display: flex;
     justify-content: space-evenly;
-    width: 1920px;
+    width: 120rem;
   }
 }
 
@@ -1410,10 +1338,10 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 546px;
+  height: 34rem;
 
   &__content {
-    width: 1920px;
+    width: 120rem;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -1422,12 +1350,12 @@ main {
   }
 
   &__for-updates {
+    width: 31rem;
+    height: 19rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 500px;
-    height: 300px;
-    margin-right: 100px;
+    margin-right: 6rem;
   }
 
   &__checkboxes {
@@ -1436,8 +1364,8 @@ main {
   }
 
   &__checkbox-category {
-    width: 90px;
-    height: 30px;
+    width: 6rem;
+    height: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1454,15 +1382,13 @@ main {
   }
 
   &__form {
-    width: 500px;
-    height: 90px;
     position: relative;
   }
 
   &__input {
-    width: 344px;
-    height: 52px;
-    margin-right: 10px;
+    width: 21.5rem;
+    height: 4rem;
+    margin-right: 0.5rem;
   }
 
   &__receive-communications {
@@ -1491,8 +1417,8 @@ main {
   }
 
   &__button {
-    width: 140px;
-    height: 58px;
+    width: 9rem;
+    height: 4rem;
     background-color: var(--primary);
     color: var(--white);
     border: 1px solid var(--primary);
@@ -1501,28 +1427,28 @@ main {
 }
 
 .footer {
-  height: 358px;
+  height: 22.5rem;
   position: relative;
   display: flex;
   justify-content: center;
   background-color: var(--gray900);
 
   &__content {
-    width: 1920px;
+    width: 120rem;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   &__categories {
-    width: 1200px;
-    height: 300px;
+    width: 75rem;
+    height: 19rem;
     display: flex;
     justify-content: space-around;
   }
 
   &__divider {
-    width: 1500px;
+    width: 90%;
     position: absolute;
     top: 300px;
     border: 1px solid var(--white);
@@ -1539,6 +1465,10 @@ main {
     color: var(--white);
     margin-top: 20px;
     margin-left: 100px;
+
+    img {
+      margin: 0 .25rem;
+    }
   }
 
   &__go-to-top {
@@ -1560,36 +1490,47 @@ main {
   &__shop,
   &__get-in-touch,
   &__download {
-    margin-top: 50px;
+    margin-top: 3rem;
   }
 
-  &__text-white {
-    font-weight: var(--font-bold);
-    line-height: 160%;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--white);
-  }
+  &__text {
+    &_white {
+      font-weight: var(--font-bold);
+      line-height: 160%;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+    }
 
-  &__text-graywhite {
-    line-height: 160%;
-    color: var(--white);
-    opacity: 0.6;
-  }
+    &_graywhite {
+      line-height: 160%;
+      color: var(--white);
+      opacity: 0.6;
 
-  &__text-call,
-  &__text-email {
-    line-height: 160%;
-    color: var(--white);
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &_call, &_email {
+      line-height: 160%;
+      color: var(--white);
+    }
   }
 
   &__call,
   &__email {
+    margin-left: 0.25rem;
     opacity: 0.6;
+
+    &:hover {
+      font-style: italic;
+      text-decoration: underline;
+    }
   }
 
   &__download {
-    width: 350px;
+    width: 22rem;
   }
 
   &__apps {
@@ -1617,7 +1558,7 @@ main {
   height: 60rem;
 
   &__content {
-    width: 1920px;
+    width: 120rem;
     position: relative;
     display: flex;
     justify-content: space-evenly;
@@ -1804,7 +1745,7 @@ main {
   }
 }
 
-button.dropdown-toggle.btn.btn-secondary {
+button.dropdown-toggle.btn.btn-primary {
   background: var(--gray900);
   border: none;
 } 

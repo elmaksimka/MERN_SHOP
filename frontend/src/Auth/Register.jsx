@@ -1,15 +1,15 @@
-import SignUp from '../components/SignUp'
-import Homepage from './Homepage'
+import SignUp from './SignUp'
+import Homepage from '../pages/Homepage'
 
 import { useSelector } from 'react-redux'
 
-function Register(props) {
+function Register() {
   const isRegistering = useSelector(state => state.authorizing.isRegistering);
 
   return (
     <>
       <Homepage />
-      {isRegistering && <SignUp onClose={props.onClose} />}
+      {isRegistering && <SignUp />}
     </>
   )
 }

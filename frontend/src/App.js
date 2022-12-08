@@ -3,8 +3,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NotFound from './pages/NotFound';
 import Homepage from './pages/Homepage';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Login from './Auth/Login';
+import Register from './Auth/Register';
 import Women from './pages/Women';
 import Men from './pages/Men';
 import Girls from './pages/Girls';
@@ -18,29 +18,21 @@ import Faq from './pages/Faq';
 import NewArrivals from './pages/NewArrivals';
 import TrendingNow from './pages/TrendingNow';
 import Brands from './pages/Brands';
-import Layout from './pages/Layout';
+import Layout from './components/UI/Layout';
 
-import { useDispatch, useSelector } from 'react-redux';
-
-import { authorizingActions } from './app/isAuthorizing-slice';
+import { useSelector } from 'react-redux';
 import Profile from './components/Profile';
 import Account from './pages/Account';
 import Orders from './components/Orders';
 import Wishlist from './components/Wishlist';
 import RecentlyViewed from './components/RecentlyViewed';
 import Reviews from './components/Reviews';
-import Logout from './components/Logout';
+import Logout from './Auth/Logout';
 
 function App() {
-  const dispatch = useDispatch();
-
-  const hideModalHandler = () => {
-    dispatch(authorizingActions.reset());
-  };
-
+  const { user } = useSelector((state) => state.auth);
   const isLoggingIn = useSelector((state) => state.authorizing.isLoggingIn);
   const isRegistering = useSelector((state) => state.authorizing.isRegistering);
-  const { user } = useSelector((state) => state.auth);
 
   return (
     <>
@@ -51,9 +43,9 @@ function App() {
               path="/"
               element={
                 isLoggingIn && !isRegistering ? (
-                  <Login onClose={hideModalHandler} />
+                  <Login />
                 ) : !isLoggingIn && isRegistering ? (
-                  <Register onClose={hideModalHandler} />
+                  <Register />
                 ) : (
                   <Homepage />
                 )

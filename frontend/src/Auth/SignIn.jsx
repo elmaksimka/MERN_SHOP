@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { login, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
-import Modal from './UI/Modal'
+import Modal from '../components/UI/Modal'
 import { authorizingActions } from '../app/isAuthorizing-slice'
 import eye from '../img/eyes.svg'
 
-function SignIn(props) {
+function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
 
   const showPasswordHandler = () => {
@@ -71,8 +71,12 @@ function SignIn(props) {
     dispatch(authorizingActions.registering())
   }
 
+  const hideModalHandler = () => {
+    dispatch(authorizingActions.reset());
+  };
+
   return (
-    <Modal onClose={props.onClose}>
+    <Modal onClose={hideModalHandler}>
       <div className='signinup__container'>
         <h3 className='signinup__title'>
           Sign in
@@ -85,13 +89,13 @@ function SignIn(props) {
             <label htmlFor="email" className="signinup__label">
               Email
             </label>
-            <input type='email' id="email" name="email" autoComplete="off" placeholder="Your working email" className="signinup__input" value={email} onChange={onChange} />
+            <input type='email' name="email" autoComplete="off" placeholder="Your working email" className="signinup__input" value={email} onChange={onChange} />
           </div>
           <div className="signinup__control">
             <label htmlFor="password" className="signinup__label">
               Password
             </label>
-            <input type={passwordInputType} id='password'
+            <input type={passwordInputType}
               name='password' placeholder="* * * * * * * * * *" className="signinup__input" value={password} onChange={onChange} />
             <img src={eye} alt="show" onClick={showPasswordHandler} />
           </div>

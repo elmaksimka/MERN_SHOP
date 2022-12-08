@@ -4,16 +4,22 @@ const favouriteSlice = createSlice({
   name: 'favourite',
   initialState: {
     favouriteCounter: 0,
-    // isActive: false
+    favHeartIsActive: false
   },
   reducers: {
     addItemToFavourite(state, action) {
-      // state.isActive = true;
       state.favouriteCounter++;
+
+      const id = action.payload;
+      const existingItem = state.props.find(item => item.id === id);
+      existingItem.favHeartIsActive(true);
     },
     removeItemFromFavourite(state, action) {
-      // state.isActive = false;
       state.favouriteCounter--;
+
+      const id = action.payload;
+      const existingItem = state.props.find(item => item.id === id);
+      existingItem.favHeartIsActive(false);
     },
   },
 });

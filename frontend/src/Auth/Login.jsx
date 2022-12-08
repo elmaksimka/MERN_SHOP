@@ -1,15 +1,15 @@
-import SignIn from "../components/SignIn"
-import Homepage from "./Homepage"
+import SignIn from "./SignIn"
+import Homepage from "../pages/Homepage"
 
 import { useSelector } from 'react-redux'
 
-function Login(props) {
+function Login() {
   const isLoggingIn = useSelector(state => state.authorizing.isLoggingIn);
 
   return (
     <>
       <Homepage />
-      {isLoggingIn && <SignIn onClose={props.onClose} />}
+      {isLoggingIn && <SignIn />}
     </>
   )
 }

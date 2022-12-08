@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { favouriteActions } from '../app/favourite-slice';
 
 import heart from '../img/heart.svg';
@@ -7,17 +6,18 @@ import heart from '../img/heart.svg';
 export const TrendingNow = (props) => {
   const dispatch = useDispatch();
 
-  const [favIsActive, setFavIsActive] = useState(false);
+  const { user } = useSelector((state) => state.auth);
+
+  const favIsActive = useSelector(state => state.favourite.favHeartIsActive);
 
   const toggleFavHandler = () => {
     if (favIsActive === false) {
       dispatch(favouriteActions.addItemToFavourite());
-      setFavIsActive(true);
     } else {
       dispatch(favouriteActions.removeItemFromFavourite());
-      setFavIsActive(false);
     }
   };
+  
   return (
     <>
       <div className="trending-now__product" key={props.id} id={props.id}>

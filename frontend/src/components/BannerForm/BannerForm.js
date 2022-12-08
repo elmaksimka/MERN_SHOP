@@ -50,7 +50,7 @@ export const BannerForm = (props) => {
       <div className={emailControlClasses}>
         <label htmlFor="email">Email</label>
         <br />
-        <input type="text" id="email" placeholder="Your working email" autoComplete='off' ref={emailInputRef} />
+        <input type="text" placeholder="Your working email" autoComplete='off' ref={emailInputRef} />
         {/* {!formInputsValidity.email && <p className={classes.error}>Enter valid email!</p>} */}
         {/* {isSubmitted && <p className={classes.success}>Success</p>} */}
       </div>

@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { register, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
-import Modal from './UI/Modal'
+import Modal from '../components/UI/Modal'
 import { authorizingActions } from '../app/isAuthorizing-slice'
 import eye from '../img/eyes.svg'
 
-function SignUp(props) {
+function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
 
   const showPasswordHandler = () => {
@@ -80,8 +80,12 @@ function SignUp(props) {
     dispatch(authorizingActions.loggingIn())
   }
 
+  const hideModalHandler = () => {
+    dispatch(authorizingActions.reset());
+  };
+
   return (
-    <Modal onClose={props.onClose}>
+    <Modal onClose={hideModalHandler}>
       <div className='signinup__container'>
         <h3 className='signinup__title'>
           Sign up
@@ -94,19 +98,19 @@ function SignUp(props) {
             <label htmlFor="name" className="signinup__label">
               Full Name (e.g. John Cena) 
             </label>
-            <input type="text" id="name" name="name" autoComplete="off" placeholder="Your full name" className="signinup__input" value={name} onChange={onChange} />
+            <input type="text" name="name" autoComplete="off" placeholder="Your full name" className="signinup__input" value={name} onChange={onChange} />
           </div>
           <div className="signinup__control">
             <label htmlFor="email" className="signinup__label">
               Email
             </label>
-            <input type="email" id="email" name="email" autoComplete="off" placeholder="Your working email" className="signinup__input" value={email} onChange={onChange} />
+            <input type="email" name="email" autoComplete="off" placeholder="Your working email" className="signinup__input" value={email} onChange={onChange} />
           </div>
           <div className="signinup__control">
             <label htmlFor="password1" className="signinup__label">
               Password
             </label>
-            <input type={passwordInputType} id='password'
+            <input type={passwordInputType}
               name='password' placeholder="* * * * * * * * * *" className="signinup__input" value={password} onChange={onChange} />
             <img src={eye} alt="show" onClick={showPasswordHandler} />
           </div>
@@ -114,7 +118,7 @@ function SignUp(props) {
             <label htmlFor="password2" className="signinup__label">
               Confirm Password
             </label>
-            <input type={passwordInputType} id='password2'
+            <input type={passwordInputType}
               name='password2' placeholder="* * * * * * * * * *" className="signinup__input" value={password2} onChange={onChange} />
             <img src={eye} alt="show" onClick={showPasswordHandler} />
           </div>

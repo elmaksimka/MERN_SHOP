@@ -1,7 +1,6 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import CarouselLine from '../components/CarouselLine'
 import shopping from '../img/shopping.svg'
 import googlePlay from '../img/google-play.svg'
 import appStore from '../img/app-store.svg'
@@ -42,9 +41,21 @@ import { TrendingNow } from '../components/TrendingNow'
 
 import { cartActions } from '../app/cart-slice'
 import { BannerForm } from '../components/BannerForm/BannerForm'
+import { toast } from 'react-toastify'
 
-function Homepage(props) {
-    // const [heartClass, setHeartClass] = useState(false);
+function Homepage() {
+    const dispatch = useDispatch();
+
+    const { user } = useSelector((state) => state.auth);
+
+    const inkognitoAddToCartHandler = () => {
+        toast.error('You need to sign in!');
+    }
+
+    const inkognitoFavHandler = () => {
+        toast.error('You need to sign in!');
+    }
+
 
     const [ellipseClass, setEllipseClass] = useState(false);
 
@@ -73,7 +84,7 @@ function Homepage(props) {
         .slice(newArrivalPagesVisited, newArrivalPagesVisited + newArrivalItemsPerPage)
         .map((newArrival) => {
             return (
-                <NewArrival key={newArrival._id} id={newArrival._id} name={newArrival.name} price={newArrival.price} url={newArrival.url} />
+                <NewArrival key={newArrival._id} id={newArrival._id} name={newArrival.name} price={newArrival.price} url={newArrival.url} onAddToFav={inkognitoFavHandler} />
             );
         });
 
@@ -148,8 +159,6 @@ function Homepage(props) {
             .catch((err) => console.log(err));
     }, [])
 
-    const dispatch = useDispatch();
-
     const addToCartHandler = () => {
         dispatch(cartActions.addItemToCart());
     }
@@ -200,7 +209,7 @@ function Homepage(props) {
                                 </div>
                             </div>
                         </div>
-                        <button className="sale__cart__button" onClick={addToCartHandler}>
+                        <button className="sale__cart__button" onClick={user ? addToCartHandler : inkognitoAddToCartHandler}>
                             <img src={cart} alt="cart" />
                             Add to cart
                         </button>

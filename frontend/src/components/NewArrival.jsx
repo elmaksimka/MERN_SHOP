@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { favouriteActions } from '../app/favourite-slice';
 
@@ -6,22 +5,19 @@ import heart from '../img/heart.svg';
 
 export const NewArrival = (props) => {
   const dispatch = useDispatch();
-  //   const isActive = useSelector(state => state.favourite.isActive);
 
-  const [favIsActive, setFavIsActive] = useState(false);
+  const { user } = useSelector((state) => state.auth);
 
-  //   const { id } = props.item;
+  const favIsActive = useSelector(state => state.favourite.favHeartIsActive);
 
   const toggleFavHandler = () => {
     if (favIsActive === false) {
       dispatch(favouriteActions.addItemToFavourite());
-      setFavIsActive(true);
     } else {
       dispatch(favouriteActions.removeItemFromFavourite());
-      setFavIsActive(false);
     }
   };
-
+  
   return (
     <div className="new-arrivals__products__item" key={props.id} id={props.id}>
       <img
@@ -31,7 +27,7 @@ export const NewArrival = (props) => {
       />
       <p className="new-arrivals__products-name-text">{props.name}</p>
       <p className="new-arrivals__products-price-text">{props.price}</p>
-      <div onClick={toggleFavHandler}>
+      <div onClick={user ? toggleFavHandler : props.onAddToFav}>
         <img
           src={heart}
           alt="heart"
