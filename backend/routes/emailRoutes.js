@@ -1,7 +1,7 @@
-const express = require('express')
-const router = express.Router()
-const { registerEmail } = require('../contollers/emailController')
+// const express = require('express')
+// const router = express.Router()
+// const { registerEmail } = require('../contollers/emailController')
 
-router.post('/', registerEmail)
+// router.post('/', registerEmail)
 
-module.exports = router
+// module.exports = router

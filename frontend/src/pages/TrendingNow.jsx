@@ -1,36 +1,37 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
+import classes from '../pages/Page.module.css'
 
-function TrendingNow() {
-  // const [trendingItems, setTrendingItems] = useState([]);
+function TrendingNowPage() {
+  const [trendingNowProduct, setTrendingNowProduct] = useState([]);
 
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/trendingnow')
-  //     .then((res) => res.json())
-  //     .then((jsonRes) => setTrendingItems(jsonRes))
-  //     .catch((err) => console.log(err));
-  // }, [])
-
-  // const displayTrendingItems = trendingItems.map((trendingNow) => {
-  //     return (
-  //       <TrendingNow key={trendingNow._id} id={trendingNow._id} name={trendingNow.name} price={trendingNow.price} url={trendingNow.url} />
-  //     );
-  //   });
+  useEffect(() => {
+    fetch('http://localhost:5000/trendingnow')
+      .then((res) => res.json())
+      .then((jsonRes) => setTrendingNowProduct(jsonRes))
+      .catch((err) => console.log(err));
+  }, [])
 
   return (
     <>
-    <div>Trending now content</div>
-      {/* <div className="trending-now">
-        <div className="trending-now__content">
-          <h1 className="trending-now__title">
-            Trending now
-          </h1>
-          <div className="trending-now__products">
-            {displayTrendingItems}
-          </div>
-        </div>
-      </div> */}
+      <h1 className={classes.title}>
+        Trending Now
+      </h1>
+      <div className={classes.container}>
+        {trendingNowProduct.map((trendingNow) => {
+          return (
+            <div key={trendingNow._id} className={classes.item}>
+              <div className={classes.image}>
+                <img src={trendingNow.url} alt={trendingNow.name} />
+              </div>
+              <Link to={trendingNow._id} className={classes.name}>{trendingNow.name}</Link>
+              <h3>{trendingNow.price}</h3>
+            </div>
+          )
+        })}
+      </div>
     </>
   )
 }
 
-export default TrendingNow
+export default TrendingNowPage

@@ -1,4 +1,4 @@
-function DeliveryReturns() {
+function DeliveryReturnsPage() {
   return (
     <>
       <div style={{ background: '#ead' }}>
@@ -8,4 +8,4 @@ function DeliveryReturns() {
   )
 }
 
-export default DeliveryReturns
+export default DeliveryReturnsPage

@@ -22,7 +22,7 @@ h1 {
 main {
   position: relative;
   overflow: hidden;
-  margin-top: -7.5rem;
+  min-height: 600px;
 }
 
 .signinup__container {
@@ -72,11 +72,6 @@ main {
   border-radius: 4px;
 }
 .signinup__input::-moz-placeholder {
-  font-size: var(--size-s);
-  line-height: 150%;
-  color: var(--gray600);
-}
-.signinup__input:-ms-input-placeholder {
   font-size: var(--size-s);
   line-height: 150%;
   color: var(--gray600);
@@ -149,17 +144,7 @@ main {
   border: 8px solid;
   border-color: #000 transparent #555 transparent;
   border-radius: 50%;
-  -webkit-animation: spin 1.2s linear infinite;
-          animation: spin 1.2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  animation: spin 1.2s linear infinite;
 }
 
 @keyframes spin {
@@ -407,6 +392,10 @@ main {
 }
 .carousel-root {
   height: 100%;
+}
+
+.carousel.carousel-slider {
+  padding: 0;
 }
 
 .top-categories {
@@ -729,6 +718,7 @@ main {
   left: 350px;
 }
 .trending-now__text {
+  display: block;
   font-size: var(--size-l);
   line-height: 150%;
   text-align: center;
@@ -1485,4 +1475,8 @@ main {
 button.dropdown-toggle.btn.btn-primary {
   background: var(--gray900);
   border: none;
+}
+
+.content {
+  text-align: center;
 }/*# sourceMappingURL=index.css.map */

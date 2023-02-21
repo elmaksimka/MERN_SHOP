@@ -1,0 +1,38 @@
+.container {
+  width: 120rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.title {
+  margin: 3rem 0;
+}
+
+.item {
+  width: 36rem;
+  height: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  height: 80%;
+}
+
+.name {
+  font-size: var(--size-32px);
+  color: var(--black);
+}
+
+.center {
+  display: block;
+  text-align: center;
+}

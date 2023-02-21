@@ -7,20 +7,28 @@ const favouriteSlice = createSlice({
     favHeartIsActive: false
   },
   reducers: {
-    addItemToFavourite(state, action) {
+    // addItemToFavourite(state, action) {
+    //   state.favouriteCounter++;
+
+    //   const id = action.payload;
+    //   const existingItem = state.props.find(item => item.id === id);
+    //   existingItem.favHeartIsActive(true);
+    // },
+    // removeItemFromFavourite(state, action) {
+    //   state.favouriteCounter--;
+
+    //   const id = action.payload;
+    //   const existingItem = state.props.find(item => item.id === id);
+    //   existingItem.favHeartIsActive(false);
+    // },
+    toggleFavourite(state, action) {
       state.favouriteCounter++;
 
       const id = action.payload;
       const existingItem = state.props.find(item => item.id === id);
-      existingItem.favHeartIsActive(true);
-    },
-    removeItemFromFavourite(state, action) {
-      state.favouriteCounter--;
-
-      const id = action.payload;
-      const existingItem = state.props.find(item => item.id === id);
-      existingItem.favHeartIsActive(false);
-    },
+      
+      existingItem.favHeartIsActive(!state.favHeartIsActive);
+    }
   },
 });
 

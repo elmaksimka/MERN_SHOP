@@ -8,7 +8,7 @@ import deleteAcc from '../img/delete.svg'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-function Account() {
+function AccountPage() {
     const location = useLocation();
     let category = location.pathname.slice(1);
 
@@ -78,4 +78,4 @@ function Account() {
     )
 }
 
-export default Account;
+export default AccountPage

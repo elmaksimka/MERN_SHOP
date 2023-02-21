@@ -1,14 +1,24 @@
+import { Outlet } from "react-router-dom";
 import CarouselLine from "../CarouselLine";
 import Footer from "./Footer";
 import Header from "./Header";
+import { useLocation } from "react-router";
+import { useEffect } from "react";
 
+const Layout = ({ onShowLogin, onShowRegister }) => {
+  const location = useLocation();
 
-const Layout = (props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <>
-      <Header onLogin={props.onShowLogin} onRegister={props.onShowRegister} />
+      <Header onLogin={onShowLogin} onRegister={onShowRegister} />
       <CarouselLine />
-      <main>{props.children}</main>
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </>
   );

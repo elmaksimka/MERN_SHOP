@@ -1,5 +1,5 @@
 import SignIn from "./SignIn"
-import Homepage from "../pages/Homepage"
+import Homepage from "../pages/Home"
 
 import { useSelector } from 'react-redux'
 

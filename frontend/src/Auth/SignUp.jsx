@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { register, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
@@ -77,11 +77,12 @@ function SignUp() {
   }
 
   const moveToLoginHandler = () => {
-    dispatch(authorizingActions.loggingIn())
+    dispatch(authorizingActions.loggingIn());
   }
 
   const hideModalHandler = () => {
     dispatch(authorizingActions.reset());
+    navigate('/');
   };
 
   return (
@@ -134,9 +135,9 @@ function SignUp() {
         </form>
         <p>
           Already have an account?
-          <span className="signinup__goto" onClick={moveToLoginHandler}>
+          <Link to={'?mode=login'} className="signinup__goto" onClick={moveToLoginHandler}>
             Sign in
-          </span>
+          </Link>
         </p>
         <div className='signinup__socials'>
           <p className="signinup__alternative">

@@ -1,4 +1,4 @@
-function Faq() {
+function FaqPage() {
   return (
     <>
       <div style={{ background: '#addd' }}>
@@ -8,4 +8,4 @@ function Faq() {
   )
 }
 
-export default Faq
+export default FaqPage

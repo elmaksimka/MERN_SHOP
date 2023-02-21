@@ -1,4 +1,4 @@
-function TrackOrder() {
+function TrackOrderPage() {
   return (
     <>
       <div style={{ background: '#fda' }}>
@@ -8,4 +8,4 @@ function TrackOrder() {
   )
 }
 
-export default TrackOrder
+export default TrackOrderPage

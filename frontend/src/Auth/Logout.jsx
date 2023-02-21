@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 
-function Logout() {
+function LogoutPage() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -13,13 +13,13 @@ function Logout() {
   }
 
   return (
-    <>
+    <div className="signout__box">
       <div>Are you sure you wanna sign out?</div>
       <button className="signout__button" onClick={onLogout}>
         Yes
       </button>
-    </>
+    </div>
   )
 }
 
-export default Logout
+export default LogoutPage

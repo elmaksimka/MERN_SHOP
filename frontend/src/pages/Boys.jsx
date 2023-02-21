@@ -1,4 +1,4 @@
-function Boys() {
+function BoysPage() {
   return (
     <>
       <div style={{ background: 'purple' }}>
@@ -8,4 +8,4 @@ function Boys() {
   )
 }
 
-export default Boys
+export default BoysPage

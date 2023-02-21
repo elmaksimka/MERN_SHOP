@@ -1,4 +1,4 @@
-function Brands() {
+function BrandsPage() {
   return (
     <>
       <div style={{ background: '#ada' }}>
@@ -8,4 +8,4 @@ function Brands() {
   )
 }
 
-export default Brands
+export default BrandsPage

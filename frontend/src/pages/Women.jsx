@@ -1,4 +1,4 @@
-function Women() {
+function WomenPage() {
   return (
     <>
       <div style={{ background: 'pink' }}>
@@ -8,4 +8,4 @@ function Women() {
   )
 }
 
-export default Women
+export default WomenPage

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Form, Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { login, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
@@ -9,6 +9,9 @@ import { authorizingActions } from '../app/isAuthorizing-slice'
 import eye from '../img/eyes.svg'
 
 function SignIn() {
+  // const [searchParams] = useSearchParams();
+  // const isLogin = searchParams.get('mode') === 'login';
+
   const [showPassword, setShowPassword] = useState(false);
 
   const showPasswordHandler = () => {
@@ -73,6 +76,7 @@ function SignIn() {
 
   const hideModalHandler = () => {
     dispatch(authorizingActions.reset());
+    navigate('/');
   };
 
   return (
@@ -84,7 +88,7 @@ function SignIn() {
         <p className="signinup__info">
           Sign in to your account using email and password provided during registration.
         </p>
-        <form className='signinup__form' onSubmit={onSubmit}>
+        <Form method='post' className='signinup__form' onSubmit={onSubmit}>
           <div className="signinup__control">
             <label htmlFor="email" className="signinup__label">
               Email
@@ -111,12 +115,12 @@ function SignIn() {
           <button type="submit" className="signinup__button">
             Sign in
           </button>
-        </form>
+        </Form>
         <p>
           Don't have an account?
-          <span className="signinup__goto" onClick={moveToRegisterHandler}>
+          <Link to={'?mode=register'} onClick={moveToRegisterHandler} className="signinup__goto">
             Sign up
-          </span>
+          </Link>
         </p>
         <div className='signinup__socials'>
           <p className="signinup__alternative">

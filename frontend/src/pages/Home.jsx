@@ -40,22 +40,26 @@ import { NewArrival } from '../components/NewArrival'
 import { TrendingNow } from '../components/TrendingNow'
 
 import { cartActions } from '../app/cart-slice'
-import { BannerForm } from '../components/BannerForm/BannerForm'
+import BannerForm from '../components/BannerForm/BannerForm'
 import { toast } from 'react-toastify'
+import { favouriteActions } from '../app/favourite-slice'
 
-function Homepage() {
+function HomePage() {
     const dispatch = useDispatch();
 
     const { user } = useSelector((state) => state.auth);
 
     const inkognitoAddToCartHandler = () => {
-        toast.error('You need to sign in!');
+        toast.error('You need to sign in for adding to cart!');
     }
 
     const inkognitoFavHandler = () => {
-        toast.error('You need to sign in!');
+        toast.error('You need to sign in for marking product as favourite!');
     }
 
+    const favHandler = () => {
+        dispatch(favouriteActions.addItemToFavourite());
+    }
 
     const [ellipseClass, setEllipseClass] = useState(false);
 
@@ -218,20 +222,10 @@ function Homepage() {
             );
         });
 
-    const salePageCount = Math.ceil(trendingItems.length / trendingItemsPerPage);
+    const salePageCount = Math.ceil(saleItems.length / saleItemsPerPage);
 
     const changeSalePage = ({ selected }) => {
         setSalePageNumber(selected);
-    };
-
-    const submitEmailHandler = async (userEmail) => {
-        // await fetch("", {
-        //   method: "POST",
-        //   body: JSON.stringify({
-        //     email: userEmail,
-        //   }),
-        // });
-        console.log(userEmail.email);
     };
 
     return (
@@ -339,7 +333,7 @@ function Homepage() {
                         <div className="new-arrivals__checkout">
                             Check out our latest arrivals for the upcoming season
                         </div>
-                        <Link to='/newarrivals' className="new-arrivals__see-collection">
+                        <Link to='newarrivals' className="new-arrivals__see-collection">
                             See the collection here
                         </Link>
                     </div>
@@ -417,7 +411,7 @@ function Homepage() {
                             <div className="banners__banner-text2">
                                 Get 5% Off & Free Delivery
                             </div>
-                            <BannerForm onSubmit={submitEmailHandler} />
+                            <BannerForm />
                             <div className="subscribe-text">
                                 *Sign up to be the first to hear about exclusive deals, special offers and upcoming
                                 collections.
@@ -464,7 +458,7 @@ function Homepage() {
                         />
                     </div>
                     <div className="trending-now__btn">
-                        <Link to='/trendingnow' className="trending-now__button">
+                        <Link to='trendingnow' className="trending-now__button">
                             Explore top sales
                         </Link>
                     </div>
@@ -646,4 +640,4 @@ function Homepage() {
     )
 }
 
-export default Homepage
+export default HomePage

@@ -1,4 +1,4 @@
-function Men() {
+function MenPage() {
   return (
     <>
       <div style={{ background: 'blue' }}>
@@ -8,4 +8,4 @@ function Men() {
   )
 }
 
-export default Men
+export default MenPage

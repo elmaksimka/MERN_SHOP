@@ -23,7 +23,7 @@ h1 {
 main {
   position: relative;
   overflow: hidden;
-  margin-top: -7.5rem;
+  min-height: 600px;
 }
 
 .signinup {
@@ -466,6 +466,10 @@ main {
   }
 }
 
+.carousel.carousel-slider {
+  padding: 0;
+}
+
 .top-categories {
   height: 27rem;
   display: flex;
@@ -854,6 +858,7 @@ main {
   }
 
   &__text {
+    display: block;
     font-size: var(--size-l);
     line-height: 150%;
     text-align: center;
@@ -1749,3 +1754,7 @@ button.dropdown-toggle.btn.btn-primary {
   background: var(--gray900);
   border: none;
 } 
+
+.content {
+  text-align: center;
+}

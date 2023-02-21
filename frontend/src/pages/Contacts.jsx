@@ -1,4 +1,4 @@
-function Contacts() {
+function ContactsPage() {
   return (
     <>
       <div style={{ background: '#adad' }}>
@@ -8,4 +8,4 @@ function Contacts() {
   )
 }
 
-export default Contacts
+export default ContactsPage

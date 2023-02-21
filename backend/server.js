@@ -12,7 +12,7 @@ const InstagramImage = require('./models/instagramImageModel');
 const FashionBlog = require('./models/fashionBlogModel');
 const TrendingNow = require('./models/trendingNowModel');
 const Sale = require('./models/saleModel');
-const Email = require('./models/emailModel');
+const SubEmail = require('./models/subEmailModel');
 
 connectDB();
 
@@ -30,6 +30,14 @@ app.get('/categories', (req, res) => {
 
 app.get('/newarrivals', (req, res) => {
   NewArrival.find({})
+    .then((items) => res.json(items))
+    .catch((err) => console.log(err));
+});
+
+app.get('/newarrivals/:id', (req, res) => {
+  const newArrivalId = req.params.id;
+
+  NewArrival.findById(newArrivalId)
     .then((items) => res.json(items))
     .catch((err) => console.log(err));
 });
@@ -58,16 +66,46 @@ app.get('/trendingnow', (req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.get('/trendingnow/:id', (req, res) => {
+  const trendingNowId = req.params.id;
+
+  TrendingNow.findById(trendingNowId)
+    .then((items) => res.json(items))
+    .catch((err) => console.log(err));
+});
+
 app.get('/sales', (req, res) => {
   Sale.find({})
     .then((items) => res.json(items))
     .catch((err) => console.log(err));
 });
 
-app.get('/emails', (req, res) => {
-  Email.find({})
+app.get('/sales/:id', (req, res) => {
+  const saleId = req.params.id;
+
+  Sale.findById(saleId)
     .then((items) => res.json(items))
     .catch((err) => console.log(err));
+});
+
+app.get('/subsemails', (req, res) => {
+  SubEmail.find({})
+    .then((items) => res.json(items))
+    .catch((err) => console.log(err));
+});
+
+app.post('/subsemails', (req, res) => {
+  const { email } = req.body;
+
+  const subEmail = new SubEmail({
+    email
+  });
+
+  subEmail.save()
+    .then((items) => res.json(items))
+    .catch((err) => console.log(err));
+
+    res.status(201).json({ email: subEmail });
 });
 
 // app.use('/api/orders', require('./routes/orderRoutes'));

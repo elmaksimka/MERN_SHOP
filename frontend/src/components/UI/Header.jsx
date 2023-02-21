@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { authorizingActions } from '../../app/isAuthorizing-slice'
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -34,12 +34,15 @@ function Header() {
     const cartCounter = useSelector(state => state.cart.cartCounter);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const showLoginModalHandler = () => {
+        // navigate('/');
         dispatch(authorizingActions.loggingIn());
     }
 
     const showRegisterModalHandler = () => {
+        // navigate('/');
         dispatch(authorizingActions.registering());
     }
 
@@ -92,15 +95,15 @@ function Header() {
                             {!user ? (
                                 <>
                                     <img className="topbar__img" src={profile} alt="profile" />
-                                    <span className="topbar__text" onClick={showLoginModalHandler}>
+                                    <Link to='/?mode=login' className="topbar__text" onClick={showLoginModalHandler}>
                                         Log in
-                                    </span>
+                                    </Link>
                                     <span>
                                         /
                                     </span>
-                                    <span className="topbar__text" onClick={showRegisterModalHandler}>
+                                    <Link to='/?mode=register' className="topbar__text" onClick={showRegisterModalHandler}>
                                         Register
-                                    </span>
+                                    </Link>
                                 </>) : (
                                 <>
                                     <span>

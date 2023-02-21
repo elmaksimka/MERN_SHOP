@@ -1,4 +1,4 @@
-function Blog() {
+function BlogPage() {
   return (
     <>
       <div style={{ background: 'orange' }}>
@@ -8,4 +8,4 @@ function Blog() {
   )
 }
 
-export default Blog
+export default BlogPage
