@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import Navigation from '../components/UI/Navigation';
 import classes from '../pages/Page.module.css'
 
 function TrendingNowPage() {
@@ -14,6 +15,7 @@ function TrendingNowPage() {
 
   return (
     <>
+      <Navigation catName='TrendingNow' isProd={false} />
       <h1 className={classes.title}>
         Trending Now
       </h1>

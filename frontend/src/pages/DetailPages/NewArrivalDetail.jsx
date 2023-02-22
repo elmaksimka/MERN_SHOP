@@ -1,11 +1,15 @@
 import { useLoaderData, json } from 'react-router-dom'
 import ProductDetail from '../../components/ProductDetail';
+import Navigation from '../../components/UI/Navigation';
 
 const NewArrivalDetailPage = () => {
   const newArrivalData = useLoaderData();
 
   return (
-    <ProductDetail productData={newArrivalData} />
+    <>
+      <Navigation catName='NewArrivals' isProd={true} prodName={newArrivalData.name} />
+      <ProductDetail productData={newArrivalData} />
+    </>
   )
 }
 

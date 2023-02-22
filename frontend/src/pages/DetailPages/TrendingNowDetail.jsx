@@ -1,11 +1,15 @@
 import { useLoaderData, json } from 'react-router-dom'
 import ProductDetail from '../../components/ProductDetail';
+import Navigation from '../../components/UI/Navigation';
 
 const TrendingNowDetailPage = () => {
     const trendingNowData = useLoaderData();
 
     return (
-        <ProductDetail productData={trendingNowData} />
+        <>
+            <Navigation catName='TrendingNow' isProd={true} prodName={trendingNowData.name} />
+            <ProductDetail productData={trendingNowData} />
+        </>
     )
 }
 

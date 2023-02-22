@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import Navigation from '../components/UI/Navigation';
 import classes from '../pages/Page.module.css'
 
 function SalesPage() {
@@ -14,6 +15,7 @@ function SalesPage() {
 
   return (
     <>
+      <Navigation catName='Sales' isProd={false} />
       <h1 className={classes.title}>
         Sales
       </h1>

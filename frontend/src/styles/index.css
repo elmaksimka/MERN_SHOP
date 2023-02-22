@@ -1479,4 +1479,30 @@ button.dropdown-toggle.btn.btn-primary {
 
 .content {
   text-align: center;
+}
+
+.nav {
+  width: 120rem;
+  height: 3rem;
+  display: flex;
+  margin: 0 auto;
+  background: var(--gray200);
+}
+.nav__list {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 11rem;
+  list-style: none;
+}
+.nav__list div {
+  margin-right: 1rem;
+}
+.nav__text {
+  font-size: var(--size-s);
+  line-height: 150%;
+  color: var(--gray800) !important;
+}
+.nav__text__active {
+  color: var(--gray600) !important;
 }/*# sourceMappingURL=index.css.map */
