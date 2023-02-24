@@ -35,6 +35,7 @@ import { loader as saleLoader } from '../src/pages/DetailPages/SalesDetail'
 import { action as applySubAction } from '../src/components/BannerForm/BannerForm'
 import SalesDetailPage from './pages/DetailPages/SalesDetail';
 import TrendingNowDetailPage from './pages/DetailPages/TrendingNowDetail';
+import { action as applySubWithCatAction } from '../src/components/Subscribe'
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -57,6 +58,7 @@ function App() {
             <HomePage />
           ),
           action: applySubAction
+          // action: applySubWithCatAction,
         },
         {
           path: 'deliveryreturns',

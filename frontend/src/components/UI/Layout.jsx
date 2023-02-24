@@ -7,10 +7,11 @@ import { useEffect } from "react";
 
 const Layout = ({ onShowLogin, onShowRegister }) => {
   const location = useLocation();
+  const path = window.location.pathname;
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location]);
+  }, [path]);
 
   return (
     <>

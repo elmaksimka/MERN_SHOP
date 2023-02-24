@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom'
 import Home from '../../img/home.svg'
 import RightLine from '../../img/right-line.svg'
 
-const Navigation = ({ catName, prodName, isProd, prodId }) => {
+const Navigation = ({ catName, prodName, isProd }) => {
     return (
         <nav>
             <div className="nav">

@@ -1,32 +1,25 @@
 import {
   Form,
   useNavigation,
-  useActionData,
-  json
+  json,
+  redirect
 } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import classes from "./BannerForm.module.css";
 
 const BannerForm = () => {
-  const data = useActionData();
   const navigation = useNavigation();
 
   const isSubmitting = navigation.state === 'submitting';
 
   return (
-    <Form method='POST' className="input-group">
-      {data && data.errors && (
-        <ul>
-          {Object.values(data.errors).map((err) => (
-            <li key={err}>{err}</li>
-          ))}
-        </ul>
-      )}
+    <Form method='post' className="input-group">
       <div className={classes.control}>
         <label htmlFor="email">
           Email
         </label>
         <br />
-        <input type="text" id="email" name="email" placeholder="Your working email" autoComplete='off' required />
+        <input type="email" id="email" name="email" placeholder="Your working email" autoComplete='off' required />
       </div>
       <div className={classes.actions}>
         <button className={classes.submit} disabled={isSubmitting}>
@@ -41,12 +34,7 @@ export default BannerForm
 
 export async function action({ request }) {
   const data = await request.formData();
-
-  const emailData = {
-    email: data.get('email'),
-  };
-
-  console.log(emailData);
+  const emailData = Object.fromEntries(data);
 
   const response = await fetch('http://localhost:5000/subsemails', {
     method: 'POST',
@@ -57,10 +45,13 @@ export async function action({ request }) {
   });
 
   if (response.status === 422) {
-    return response;
+    return toast.error('Email already exists!');
   }
 
   if (!response.ok) {
     throw json({ message: 'Could not save email.' }, { status: 500 });
   }
+  
+  toast.success('Successfully subscribed');
+  return redirect('/');
 }

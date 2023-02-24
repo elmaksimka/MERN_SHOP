@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const trendingNowSchema = mongoose.Schema(
   {
@@ -6,17 +6,17 @@ const trendingNowSchema = mongoose.Schema(
       type: String,
     },
     name: {
-        type: String,
+      type: String,
     },
     price: {
-        type: String,
+      type: String,
     },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
-)
+);
 
-const TrendingNow = mongoose.model('TrendingNow', trendingNowSchema)
+const TrendingNow = mongoose.model("TrendingNow", trendingNowSchema);
 
-module.exports = TrendingNow
+module.exports = TrendingNow;

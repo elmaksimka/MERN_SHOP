@@ -13,6 +13,7 @@ import profile from '../../img/profile.svg'
 import heart from '../../img/heart.svg'
 import cart from '../../img/cart.svg'
 import badge1 from '../../img/badge1.svg'
+import { toast } from 'react-toastify';
 
 function Header() {
     const ENG = 'Eng / $', UA = 'Ukr / ₴', RUS = 'Rus / ₽';
@@ -36,6 +37,8 @@ function Header() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const { user } = useSelector((state) => state.auth);
+
     const showLoginModalHandler = () => {
         // navigate('/');
         dispatch(authorizingActions.loggingIn());
@@ -46,7 +49,14 @@ function Header() {
         dispatch(authorizingActions.registering());
     }
 
-    const { user } = useSelector((state) => state.auth);
+
+    const inkognitoAddToCartHandler = () => {
+        toast.error('You need to sign in for checking cart products!');
+    }
+
+    const inkognitoFavHandler = () => {
+        toast.error('You need to sign in for checking favourite products!');
+    }
 
     return (
         <div className="header">
@@ -147,7 +157,11 @@ function Header() {
                         <img className="mainbar__img" src={search} alt="search" />
                     </form>
                     <div className="mainbar__favourite">
-                        <img className="mainbar__img" src={heart} alt="heart" />
+                        {user ?
+                            <Link to="/account/wishlist">
+                                <img className="mainbar__img" src={heart} alt="heart" />
+                            </Link>
+                            : <img className="mainbar__img" src={heart} alt="heart" onClick={inkognitoFavHandler} />}
                         <div className="mainbar__item">
                             {favouriteCounter}
                         </div>
@@ -155,7 +169,11 @@ function Header() {
                             &#124;
                         </div>
                         <div className="mainbar__item">
-                            <img className="mainbar__img" src={cart} alt="cart" />
+                        {user ?
+                            <Link to="/account/orders">
+                                <img className="mainbar__img" src={cart} alt="cart" />
+                            </Link>
+                            : <img className="mainbar__img" src={cart} alt="cart" onClick={inkognitoAddToCartHandler} />}
                         </div>
                         <div className="mainbar__item">
                             {cartCounter}

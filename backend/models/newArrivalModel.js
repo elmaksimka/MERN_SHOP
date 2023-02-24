@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const newArrivalSchema = mongoose.Schema(
   {
@@ -6,20 +6,20 @@ const newArrivalSchema = mongoose.Schema(
       type: String,
     },
     price: {
-        type: String,
-      },
+      type: String,
+    },
     url: {
       type: String,
     },
     stars: {
       type: String,
-    }
+    },
   },
   {
     timestamps: true,
   }
-)
+);
 
-const NewArrival = mongoose.model('NewArrival', newArrivalSchema)
+const NewArrival = mongoose.model("NewArrival", newArrivalSchema);
 
-module.exports = NewArrival
+module.exports = NewArrival;
