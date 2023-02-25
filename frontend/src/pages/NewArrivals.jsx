@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchNewArrival } from '../app/api/API';
 import Navigation from '../components/UI/Navigation';
 import classes from '../pages/Page.module.css'
 
 function NewArrivalsPage() {
-  const [newArrivalProduct, setNewArrivalProduct] = useState([]);
+  const dispatch = useDispatch();
+  const { newArrivals } = useSelector((state) => state.newArrivals);
 
   useEffect(() => {
-    fetch('http://localhost:5000/newarrivals')
-      .then((res) => res.json())
-      .then((jsonRes) => setNewArrivalProduct(jsonRes))
-      .catch((err) => console.log(err));
-  }, [])
+    dispatch(fetchNewArrival());
+  }, [dispatch]);
 
   return (
     <>
@@ -20,7 +20,7 @@ function NewArrivalsPage() {
         New Arrivals
       </h1>
       <div className={classes.container}>
-        {newArrivalProduct.map((newArrival) => {
+        {newArrivals.map((newArrival) => {
           return (
             <div key={newArrival._id} className={classes.item}>
               <div className={classes.image}>

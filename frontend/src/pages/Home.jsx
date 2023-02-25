@@ -5,7 +5,6 @@ import shopping from '../img/shopping.svg'
 import googlePlay from '../img/google-play.svg'
 import appStore from '../img/app-store.svg'
 import Subscribe from '../components/Subscribe'
-import heart from '../img/heart.svg'
 import inDepthConsultingLogo from '../img/in-depth-consulting-logo.svg'
 import higherFitLogo from '../img/higher-fit-logo.svg'
 import sentinalConsultingLogo from '../img/sentinal-consulting-logo.svg'
@@ -28,26 +27,35 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ReactPaginate from 'react-paginate'
 import CountdownTimer from '../components/Countdowntimer/CountdownTimer'
-import circleBlack from '../img/circle-black.svg'
-import circleBrown from '../img/circle-brown.svg'
-import circleBlue from '../img/circle-blue.svg'
-// import ellipseActive from '../img/ellipse-active.svg'
-import ellipseInactive from '../img/ellipse-inactive.svg'
-import cart from '../img/cart.svg'
-
-// import { favouriteActions } from '../app/favourite-slice'
 import { NewArrival } from '../components/NewArrival'
 import { TrendingNow } from '../components/TrendingNow'
-
 import { cartActions } from '../app/cart-slice'
 import BannerForm from '../components/BannerForm/BannerForm'
 import { toast } from 'react-toastify'
-import { favouriteActions } from '../app/favourite-slice'
+import { fetchCategory, fetchFashionBlog, fetchInstagramImage, fetchNewArrival, fetchPopularCategory, fetchSale, fetchTrendingNow } from '../app/api/API'
+import Sale from '../components/Sale'
+import Spinner from '../components/Spinner'
 
 function HomePage() {
     const dispatch = useDispatch();
 
-    const { user } = useSelector((state) => state.auth);
+    const { categories, status, error } = useSelector((state) => state.categories);
+    const { popularCategories } = useSelector((state) => state.popularCategories);
+    const { instagramImages } = useSelector((state) => state.instagramImages);
+    const { fashionBlogs } = useSelector((state) => state.fashionBlogs);
+    const { newArrivals } = useSelector((state) => state.newArrivals);
+    const { trendingNow } = useSelector((state) => state.trendingNow);
+    const { sales } = useSelector((state) => state.sales);
+
+    useEffect(() => {
+        dispatch(fetchCategory());
+        dispatch(fetchPopularCategory());
+        dispatch(fetchInstagramImage());
+        dispatch(fetchFashionBlog());
+        dispatch(fetchNewArrival());
+        dispatch(fetchTrendingNow());
+        dispatch(fetchSale());
+    }, [dispatch]);
 
     const inkognitoAddToCartHandler = () => {
         toast.error('You need to sign in for adding to cart!');
@@ -57,34 +65,11 @@ function HomePage() {
         toast.error('You need to sign in for marking product as favourite!');
     }
 
-    const favHandler = () => {
-        dispatch(favouriteActions.addItemToFavourite());
-    }
-
-    const [ellipseClass, setEllipseClass] = useState(false);
-
-    const [categories, setCategories] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:5000/categories')
-            .then((res) => res.json())
-            .then((jsonRes) => setCategories(jsonRes))
-            .catch((err) => console.log(err));
-    }, [])
-
-    const [newArrivalItems, setNewArrivalItems] = useState([]);
     const [newArrivalPageNumber, setNewArrivalPageNumber] = useState(0);
-
     const newArrivalItemsPerPage = 6;
     const newArrivalPagesVisited = newArrivalPageNumber * newArrivalItemsPerPage;
-    useEffect(() => {
-        fetch('http://localhost:5000/newarrivals')
-            .then((res) => res.json())
-            .then((jsonRes) => setNewArrivalItems(jsonRes))
-            .catch((err) => console.log(err));
-    }, [])
 
-    const displayNewArrivalItems = newArrivalItems
+    const displayNewArrivalItems = newArrivals
         .slice(newArrivalPagesVisited, newArrivalPagesVisited + newArrivalItemsPerPage)
         .map((newArrival) => {
             return (
@@ -92,141 +77,59 @@ function HomePage() {
             );
         });
 
-    const newArrivalPageCount = Math.ceil(newArrivalItems.length / newArrivalItemsPerPage);
+    const newArrivalPageCount = Math.ceil(newArrivals.length / newArrivalItemsPerPage);
 
     const changeNewArrivalPage = ({ selected }) => {
         setNewArrivalPageNumber(selected);
     };
 
-    const [popularCategories, setPopularCategories] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:5000/popularcategories')
-            .then((res) => res.json())
-            .then((jsonRes) => setPopularCategories(jsonRes))
-            .catch((err) => console.log(err));
-    }, [])
-
-    const [instagramImages, setInstagramImages] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:5000/instagramimages')
-            .then((res) => res.json())
-            .then((jsonRes) => setInstagramImages(jsonRes))
-            .catch((err) => console.log(err));
-    }, [])
-
-    const [fashionBlogs, setFashionBlogs] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:5000/fashionblogs')
-            .then((res) => res.json())
-            .then((jsonRes) => setFashionBlogs(jsonRes))
-            .catch((err) => console.log(err));
-    }, [])
-
-    const [trendingItems, setTrendingItems] = useState([]);
-    const [pageNumber, setPageNumber] = useState(0);
-
+    const [trendingNowPageNumber, setTrendingNowPageNumber] = useState(0);
     const trendingItemsPerPage = 3;
-    const pagesVisited = pageNumber * trendingItemsPerPage;
-    useEffect(() => {
-        fetch('http://localhost:5000/trendingnow')
-            .then((res) => res.json())
-            .then((jsonRes) => setTrendingItems(jsonRes))
-            .catch((err) => console.log(err));
-    }, [])
+    const trendingNowPagesVisited = trendingNowPageNumber * trendingItemsPerPage;
 
-    const displayTrendingItems = trendingItems
-        .slice(pagesVisited, pagesVisited + trendingItemsPerPage)
+    const displayTrendingItems = trendingNow
+        .slice(trendingNowPagesVisited, trendingNowPagesVisited + trendingItemsPerPage)
         .map((trendingNow) => {
             return (
                 <TrendingNow key={trendingNow._id} id={trendingNow._id} name={trendingNow.name} price={trendingNow.price} url={trendingNow.url} />
             );
         });
 
-    const pageCount = Math.ceil(trendingItems.length / trendingItemsPerPage);
+    const trendingNowPageCount = Math.ceil(trendingNow.length / trendingItemsPerPage);
 
-    const changePage = ({ selected }) => {
-        setPageNumber(selected);
+    const changeTrendingNowPage = ({ selected }) => {
+        setTrendingNowPageNumber(selected);
     };
 
-    const [saleItems, setSaleItems] = useState([]);
     const [salePageNumber, setSalePageNumber] = useState(0);
-
     const saleItemsPerPage = 3;
     const salePagesVisited = salePageNumber * saleItemsPerPage;
-    useEffect(() => {
-        fetch('http://localhost:5000/sales')
-            .then((res) => res.json())
-            .then((jsonRes) => setSaleItems(jsonRes))
-            .catch((err) => console.log(err));
-    }, [])
 
     const addToCartHandler = () => {
         dispatch(cartActions.addItemToCart());
     }
 
-    const displaySaleItems = saleItems
+    const displaySaleItems = sales
         .slice(salePagesVisited, salePagesVisited + saleItemsPerPage)
         .map((sale) => {
             return (
-                <div className="sale__product" key={sale._id}>
-                    <img src={sale.url} alt={sale.name} className="sale__product__img" />
-                    <div className='sale__text'>{sale.name}</div>
-                    <div className='sale__text_price'>{sale.price}</div>
-                    <div className='sale__text_price_old'>{sale.oldprice}</div>
-                    <div className="sale__heart">
-                        <img src={heart} alt="heart" />
-                    </div>
-                    <div className="sale__cart">
-                        <div className="sale__cart__properties">
-                            <div className="sale__cart__properties__size">
-                                <span>
-                                    36
-                                </span>
-                                <span>
-                                    37
-                                </span>
-                                <span>
-                                    38
-                                </span>
-                                <span>
-                                    39
-                                </span>
-                                <span>
-                                    40
-                                </span>
-                            </div>
-                            <div className="sale__cart__properties__colors">
-                                <div onClick={() => { ellipseClass ? setEllipseClass(false) : setEllipseClass(true); }}>
-                                    <img src={circleBlack} alt="circle" />
-                                    <img src={ellipseInactive} alt="ellipse" />
-                                </div>
-                                <div onClick={() => { ellipseClass ? setEllipseClass(false) : setEllipseClass(true); }}>
-                                    <img src={circleBrown} alt="circle" />
-                                    <img src={ellipseInactive} alt="ellipse" />
-                                </div>
-                                <div onClick={() => { ellipseClass ? setEllipseClass(false) : setEllipseClass(true); }}>
-                                    <img src={circleBlue} alt="circle" />
-                                    <img src={ellipseInactive} alt="ellipse" />
-                                </div>
-                            </div>
-                        </div>
-                        <button className="sale__cart__button" onClick={user ? addToCartHandler : inkognitoAddToCartHandler}>
-                            <img src={cart} alt="cart" />
-                            Add to cart
-                        </button>
-                    </div>
-                </div>
+                <Sale key={sale._id} id={sale._id} name={sale.name} url={sale.url} price={sale.price} oldprice={sale.oldprice} addToCartHandler={addToCartHandler} inkognitoAddToCartHandler={inkognitoAddToCartHandler} />
             );
         });
 
-    const salePageCount = Math.ceil(saleItems.length / saleItemsPerPage);
+    const salePageCount = Math.ceil(sales.length / saleItemsPerPage);
 
     const changeSalePage = ({ selected }) => {
         setSalePageNumber(selected);
     };
+
+    if (status === 'loading') {
+        return <Spinner />;
+    }
+
+    if (status === 'failed') {
+        return <div>{error}</div>;
+    }
 
     return (
         <>
@@ -448,8 +351,8 @@ function HomePage() {
                         <ReactPaginate
                             previousLabel={<img className="trending-now__btn-left" src={leftBtn} alt="left-btn" />}
                             nextLabel={<img className="trending-now__btn-right" src={rightBtn} alt="right-btn" />}
-                            pageCount={pageCount}
-                            onPageChange={changePage}
+                            pageCount={trendingNowPageCount}
+                            onPageChange={changeTrendingNowPage}
                             containerClassName={"trending-now__products__btns"}
                             previousLinkClassName={"trending-now__products__btn-previous"}
                             nextLinkClassName={"trending-now__products__btn-next"}

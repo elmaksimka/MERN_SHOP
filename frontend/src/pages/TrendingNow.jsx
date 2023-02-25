@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchTrendingNow } from '../app/api/API';
 import Navigation from '../components/UI/Navigation';
 import classes from '../pages/Page.module.css'
 
 function TrendingNowPage() {
-  const [trendingNowProduct, setTrendingNowProduct] = useState([]);
+  const dispatch = useDispatch();
+  const { trendingNow } = useSelector((state) => state.trendingNow);
 
   useEffect(() => {
-    fetch('http://localhost:5000/trendingnow')
-      .then((res) => res.json())
-      .then((jsonRes) => setTrendingNowProduct(jsonRes))
-      .catch((err) => console.log(err));
-  }, [])
+    dispatch(fetchTrendingNow());
+  }, [dispatch]);
 
   return (
     <>
@@ -20,7 +20,7 @@ function TrendingNowPage() {
         Trending Now
       </h1>
       <div className={classes.container}>
-        {trendingNowProduct.map((trendingNow) => {
+        {trendingNow.map((trendingNow) => {
           return (
             <div key={trendingNow._id} className={classes.item}>
               <div className={classes.image}>

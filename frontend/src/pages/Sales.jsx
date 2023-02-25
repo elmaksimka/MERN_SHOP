@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchSale } from '../app/api/API';
 import Navigation from '../components/UI/Navigation';
 import classes from '../pages/Page.module.css'
 
 function SalesPage() {
-  const [saleProduct, setSaleProduct] = useState([]);
+  const dispatch = useDispatch();
+  const { sales } = useSelector((state) => state.sales);
 
   useEffect(() => {
-    fetch('http://localhost:5000/sales')
-      .then((res) => res.json())
-      .then((jsonRes) => setSaleProduct(jsonRes))
-      .catch((err) => console.log(err));
-  }, [])
+    dispatch(fetchSale());
+  }, [dispatch]);
 
   return (
     <>
@@ -20,7 +20,7 @@ function SalesPage() {
         Sales
       </h1>
       <div className={classes.container}>
-        {saleProduct.map((sale) => {
+        {sales.map((sale) => {
           return (
             <div key={sale._id} className={classes.item}>
               <div className={classes.image}>
