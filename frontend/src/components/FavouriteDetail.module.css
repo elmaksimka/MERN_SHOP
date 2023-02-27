@@ -1,0 +1,28 @@
+.name {
+  font-size: large;
+}
+
+.image {
+  width: 12rem;
+  height: 12rem;
+}
+
+.price {
+  text-align: center;
+  font-size: medium;
+}
+
+.container {
+  width: 12rem;
+}
+
+.box {
+  position: relative;
+}
+
+.heart {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 0.7rem;
+  background-color: red;
+}

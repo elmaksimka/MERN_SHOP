@@ -1,8 +1,13 @@
-
+import { useSelector } from "react-redux";
+import FavouriteDetail from "./FavouriteDetail";
 
 function Wishlist() {
+  const favouriteProducts = useSelector(state => state.favouriteProducts.favouriteProducts);
+
   return (
-    <div>Wishlist</div>
+    <>
+      {favouriteProducts.map((favouriteProduct) => <FavouriteDetail productData={favouriteProduct} id={favouriteProduct.id} />)}
+    </>
   )
 }
 

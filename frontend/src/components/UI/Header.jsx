@@ -31,7 +31,7 @@ function Header() {
         setCountryLang(RUS);
     }
 
-    const favouriteCounter = useSelector(state => state.favourite.favouriteCounter);
+    const favouriteCounter = useSelector(state => state.favouriteProducts.favouriteCounter);
     const cartCounter = useSelector(state => state.cart.cartCounter);
 
     const dispatch = useDispatch();

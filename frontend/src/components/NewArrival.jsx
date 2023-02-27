@@ -1,26 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { favouriteActions } from '../app/favourite-slice';
+import { toggleFavourite } from '../app/favourite-slice';
 
 import heart from '../img/heart.svg';
 
-export const NewArrival = ({ id, url, name, price }) => {
+export const NewArrival = ({ id, url, name, price, onAddToFav }) => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-
-  const favIsActive = useSelector(state => state.favourite.favHeartIsActive);
-
-  // const toggleFavHandler = () => {
-  //   if (favIsActive === false) {
-  //     dispatch(favouriteActions.addItemToFavourite());
-  //   } else {
-  //     dispatch(favouriteActions.removeItemFromFavourite());
-  //   }
-  // };
+  const isFavourite = useSelector(state => state.favouriteProducts.isFavourite[id] || false);
 
   const toggleFavHandler = () => {
-    dispatch(favouriteActions.toggleFavourite());
+    dispatch(toggleFavourite({id, url, name, price}));
   }
 
   return (
@@ -32,14 +23,14 @@ export const NewArrival = ({ id, url, name, price }) => {
       />
       <Link to={`/newarrivals/${id}`} className="new-arrivals__products-name-text">{name}</Link>
       <p className="new-arrivals__products-price-text">{price}</p>
-      {/* <div onClick={user ? toggleFavHandler : props.onAddToFav}> */}
-      <div onClick={toggleFavHandler}>
+      <div>
         <img
           src={heart}
           alt="heart"
           className={
-            favIsActive ? 'new-arrivals__heart_active' : 'new-arrivals__heart'
+            isFavourite ? 'new-arrivals__heart_active' : 'new-arrivals__heart'
           }
+          onClick={user ? toggleFavHandler : onAddToFav}
         />
       </div>
     </div>

@@ -1,65 +1,46 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  favouriteCounter: 0,
+  favouriteProducts: [],
+  isFavourite: {},
+};
 
 const favouriteSlice = createSlice({
-  name: 'favourite',
-  initialState: {
-    favouriteCounter: 0,
-    favHeartIsActive: false
-  },
+  name: "favourite",
+  initialState,
   reducers: {
-    // addItemToFavourite(state, action) {
-    //   state.favouriteCounter++;
+    toggleFavourite: (state, action) => {
+      const existingProductIndex = state.favouriteProducts.findIndex(
+        (product) => product.id === action.payload.id
+      );
 
-    //   const id = action.payload;
-    //   const existingItem = state.props.find(item => item.id === id);
-    //   existingItem.favHeartIsActive(true);
-    // },
-    // removeItemFromFavourite(state, action) {
-    //   state.favouriteCounter--;
-
-    //   const id = action.payload;
-    //   const existingItem = state.props.find(item => item.id === id);
-    //   existingItem.favHeartIsActive(false);
-    // },
-    toggleFavourite(state, action) {
-      state.favouriteCounter++;
-
-      const id = action.payload;
-      const existingItem = state.props.find(item => item.id === id);
-      
-      existingItem.favHeartIsActive(!state.favHeartIsActive);
-    }
+      if (existingProductIndex !== -1) {
+        state.favouriteProducts.splice(existingProductIndex, 1);
+        state.favouriteCounter--;
+        state.isFavourite[action.payload.id] = false;
+      } else {
+        state.favouriteProducts.push({
+          id: action.payload.id,
+          name: action.payload.name,
+          url: action.payload.url,
+          price: action.payload.price,
+        });
+        state.favouriteCounter++;
+        state.isFavourite[action.payload.id] = true;
+      }
+    },
+    removeFavourite: (state, action) => {
+      const existingProductIndex = state.favouriteProducts.findIndex(
+        (product) => product.id === action.payload.id
+      );
+      state.favouriteProducts.splice(existingProductIndex, 1);
+      state.favouriteCounter--;
+      state.isFavourite[action.payload.id] = false;
+    },
   },
 });
 
-// addItemToFavourite(state, action) {
-//   const newItem = action.payload;
-//   const existingItem = state.items.find((item) => item.id === newItem.id);
-//   state.totalQuantity++;
-//   if (!existingItem) {
-//     state.items.push({
-//       id: newItem.id,
-//       price: newItem.price,
-//       quantity: 1,
-//       totalPrice: newItem.price,
-//       name: newItem.title
-//     });
-//   } else {
-//     existingItem.quantity++;
-//     existingItem.totalPrice = existingItem.totalPrice + newItem.price;
-//   }
-// },
-// removeItemFromFavourite(state, action) {
-//   const id = action.payload;
-//   const existingItem = state.items.find(item => item.id === id);
-//   state.totalQuantity--;
-//   if (existingItem.quantity === 1) {
-//     state.items = state.items.filter(item => item.id !== id);
-//   } else {
-//     existingItem.quantity--;
-//   }
-// },
-
-export const favouriteActions = favouriteSlice.actions;
+export const { toggleFavourite, removeFavourite } = favouriteSlice.actions;
 
 export default favouriteSlice;

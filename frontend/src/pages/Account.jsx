@@ -17,7 +17,7 @@ function AccountPage() {
     }
 
     const { user } = useSelector((state) => state.auth);
-    const favouriteCounter = useSelector(state => state.favourite.favouriteCounter);
+    const favouriteCounter = useSelector(state => state.favouriteProducts.favouriteCounter);
 
     return (
         <div className="account">
