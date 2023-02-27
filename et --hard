@@ -1,0 +1,20 @@
+[33m7804b5b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: checkout: moving from main to main
+[33m7804b5b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{1}: checkout: moving from main to main
+[33m7804b5b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{2}: checkout: moving from main to main
+[33m7804b5b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{3}: reset: moving to 7804b5b
+[33md426f84[m HEAD@{4}: reset: moving to d426f84
+[33m28cfa75[m HEAD@{5}: pull: Fast-forward
+[33m7804b5b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{6}: reset: moving to HEAD^
+[33m28cfa75[m HEAD@{7}: commit: updated toggling favourite products
+[33m7804b5b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{8}: commit: updated frontend handling of http requests
+[33md426f84[m HEAD@{9}: commit: updated backend routes, controllers, server.js & forms
+[33m5025969[m HEAD@{10}: commit: added nav
+[33mdd37e78[m HEAD@{11}: commit: updated App.js, added detail pages
+[33m91d5805[m HEAD@{12}: commit: some changes
+[33m794862f[m HEAD@{13}: commit: made some refactoring
+[33mc548bdc[m HEAD@{14}: commit: added lang dropdown
+[33m634780c[m HEAD@{15}: commit: added a lot of cool things
+[33me09f5ca[m HEAD@{16}: commit: added some fixes
+[33mcadbf68[m HEAD@{17}: Branch: renamed refs/heads/master to refs/heads/main
+[33mcadbf68[m HEAD@{19}: commit: added landing page
+[33m6b0b33f[m HEAD@{20}: commit (initial): Initial commit

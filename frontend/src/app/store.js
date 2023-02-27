@@ -10,12 +10,10 @@ import fashionBlogSlice from './fashionBlogs-slice';
 import newArrivalSlice from './newArrivals-slice';
 import trendingNowSlice from './trendingNow-slice';
 import saleSlice from './sales-slice';
-import favouritesReducer from '../features/favourites/favouritesSlice'
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    favourites: favouritesReducer,
     favouriteProducts: favouriteSlice.reducer,
     cart: cartSlice.reducer,
     authorizing: authorizingSlice.reducer,
