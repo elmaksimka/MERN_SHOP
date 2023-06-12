@@ -1,7 +1,7 @@
 function TrackOrderPage() {
   return (
     <>
-      <div style={{ background: '#fda' }}>
+      <div className="empty">
         Track order content
       </div>
     </>

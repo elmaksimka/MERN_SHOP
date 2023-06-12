@@ -1,23 +1,17 @@
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-// import { favouriteActions } from '../app/favourite-slice';
-
+import { favouriteActions } from '../app/favourite-slice';
 import heart from '../img/heart.svg';
 
-export const TrendingNow = ({ id, url, name, price }) => {
+export const TrendingNow = ({ id, url, name, price, onAddToFav }) => {
   const dispatch = useDispatch();
 
-  // const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
+  const isFavourite = useSelector(state => state.favouriteProducts.isFavourite[id] || false);
 
-  // const favIsActive = useSelector(state => state.favouriteProducts.favHeartIsActive);
-
-  // const toggleFavHandler = () => {
-  //   if (favIsActive === false) {
-  //     dispatch(favouriteActions.addItemToFavourite());
-  //   } else {
-  //     dispatch(favouriteActions.removeItemFromFavourite());
-  //   }
-  // };
+  const toggleFavHandler = () => {
+    dispatch(favouriteActions.toggleFavourite({ id, url, name, price }));
+  }
 
   return (
     <>
@@ -25,15 +19,16 @@ export const TrendingNow = ({ id, url, name, price }) => {
         <img src={url} alt={name} />
         <Link to={`/trendingnow/${id}`} className="trending-now__text">{name}</Link>
         <div className="trending-now__text_price">{price}</div>
-        {/* <div onClick={toggleFavHandler}>
+        <div>
           <img
             src={heart}
             alt="heart"
             className={
-              favIsActive ? 'trending-now__heart_active' : 'trending-now__heart'
+              isFavourite ? 'trending-now__heart_active' : 'trending-now__heart'
             }
+            onClick={user ? toggleFavHandler : onAddToFav}
           />
-        </div> */}
+        </div>
       </div>
     </>
   );

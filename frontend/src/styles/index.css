@@ -755,14 +755,14 @@ main {
   height: 1rem !important;
   position: absolute;
   right: 16px;
-  bottom: 150px;
+  bottom: 100px;
 }
 .trending-now__heart_active {
   width: 1rem !important;
   height: 1rem !important;
   position: absolute;
   right: 16px;
-  bottom: 150px;
+  bottom: 100px;
   background: red;
   border-radius: 3rem;
 }
@@ -880,7 +880,14 @@ main {
 .sale__heart {
   position: absolute;
   right: 16px;
-  bottom: 100px;
+  bottom: 30px;
+}
+.sale__heart_active {
+  position: absolute;
+  right: 16px;
+  bottom: 50px;
+  background: red;
+  border-radius: 44px;
 }
 .sale__heart img {
   width: 1rem;
@@ -1511,4 +1518,13 @@ button.dropdown-toggle.btn.btn-primary {
 }
 .nav__text__active {
   color: var(--gray600) !important;
+}
+
+.empty {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+  font-weight: var(--font-black);
 }/*# sourceMappingURL=index.css.map */

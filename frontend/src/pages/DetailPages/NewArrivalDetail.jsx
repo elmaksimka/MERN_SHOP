@@ -7,7 +7,7 @@ const NewArrivalDetailPage = () => {
 
   return (
     <>
-      <Navigation catName='NewArrivals' isProd={true} prodName={newArrivalData.name} />
+      <Navigation catName='New Arrivals' catPath='newarrivals' isProd={true} prodName={newArrivalData.name} />
       <ProductDetail productData={newArrivalData} />
     </>
   )

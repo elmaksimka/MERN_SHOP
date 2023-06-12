@@ -35,6 +35,9 @@ import { toast } from 'react-toastify'
 import { fetchCategory, fetchFashionBlog, fetchInstagramImage, fetchNewArrival, fetchPopularCategory, fetchSale, fetchTrendingNow } from '../app/api/API'
 import Sale from '../components/Sale'
 import Spinner from '../components/Spinner'
+import { sendFavData } from '../app/favourite-actions'
+
+let isInitial = true;
 
 function HomePage() {
     const dispatch = useDispatch();
@@ -46,6 +49,20 @@ function HomePage() {
     const { newArrivals } = useSelector((state) => state.newArrivals);
     const { trendingNow } = useSelector((state) => state.trendingNow);
     const { sales } = useSelector((state) => state.sales);
+
+    const favourites = useSelector((state) => state.favouriteProducts);
+
+    useEffect(() => {
+        if (isInitial) {
+            isInitial = false;
+            return;
+        }
+
+        if (favourites.changed) {
+            dispatch(sendFavData(favourites.favouriteProducts, ''));
+            console.log(favourites.favouriteProducts);
+        }
+    }, [favourites, dispatch]);
 
     useEffect(() => {
         dispatch(fetchCategory());
@@ -91,7 +108,7 @@ function HomePage() {
         .slice(trendingNowPagesVisited, trendingNowPagesVisited + trendingItemsPerPage)
         .map((trendingNow) => {
             return (
-                <TrendingNow key={trendingNow._id} id={trendingNow._id} name={trendingNow.name} price={trendingNow.price} url={trendingNow.url} />
+                <TrendingNow key={trendingNow._id} id={trendingNow._id} name={trendingNow.name} price={trendingNow.price} url={trendingNow.url} onAddToFav={inkognitoFavHandler} />
             );
         });
 
@@ -113,7 +130,7 @@ function HomePage() {
         .slice(salePagesVisited, salePagesVisited + saleItemsPerPage)
         .map((sale) => {
             return (
-                <Sale key={sale._id} id={sale._id} name={sale.name} url={sale.url} price={sale.price} oldprice={sale.oldprice} addToCartHandler={addToCartHandler} inkognitoAddToCartHandler={inkognitoAddToCartHandler} />
+                <Sale key={sale._id} id={sale._id} name={sale.name} url={sale.url} price={sale.price} oldprice={sale.oldprice} addToCartHandler={addToCartHandler} onAddToFav={inkognitoFavHandler} inkognitoAddToCartHandler={inkognitoAddToCartHandler} />
             );
         });
 

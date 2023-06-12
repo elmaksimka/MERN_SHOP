@@ -1,7 +1,7 @@
 function BlogPage() {
   return (
     <>
-      <div style={{ background: 'orange' }}>
+      <div className="empty">
         Blog content
       </div>
     </>

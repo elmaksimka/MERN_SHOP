@@ -15,7 +15,7 @@ function SalesPage() {
 
   return (
     <>
-      <Navigation catName='Sales' isProd={false} />
+      <Navigation catName='Sales' catPath='sales' isProd={false} />
       <h1 className={classes.title}>
         Sales
       </h1>

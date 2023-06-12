@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
 import classes from '../components/FavouriteDetail.module.css'
 import heart from '../img/heart.svg';
-import { removeFavourite } from '../app/favourite-slice';
+import { favouriteActions } from '../app/favourite-slice';
 
 const FavouriteDetail = ({ productData, id }) => {
     const dispatch = useDispatch();
 
     const removeFavHandler = () => {
-        dispatch(removeFavourite({ id }));
+        dispatch(favouriteActions.removeFavourite({ id }));
     }
 
     return (

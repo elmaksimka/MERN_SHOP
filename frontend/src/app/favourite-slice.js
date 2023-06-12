@@ -4,12 +4,16 @@ const initialState = {
   favouriteCounter: 0,
   favouriteProducts: [],
   isFavourite: {},
+  changed: false,
 };
 
 const favouriteSlice = createSlice({
   name: "favourite",
   initialState,
   reducers: {
+    replaceFav(state, action) {
+      state.favouriteProducts = action.payload.items;
+    },
     toggleFavourite: (state, action) => {
       const existingProductIndex = state.favouriteProducts.findIndex(
         (product) => product.id === action.payload.id
@@ -19,6 +23,7 @@ const favouriteSlice = createSlice({
         state.favouriteProducts.splice(existingProductIndex, 1);
         state.favouriteCounter--;
         state.isFavourite[action.payload.id] = false;
+        state.changed = true;
       } else {
         state.favouriteProducts.push({
           id: action.payload.id,
@@ -37,10 +42,11 @@ const favouriteSlice = createSlice({
       state.favouriteProducts.splice(existingProductIndex, 1);
       state.favouriteCounter--;
       state.isFavourite[action.payload.id] = false;
+      state.changed = true;
     },
   },
 });
 
-export const { toggleFavourite, removeFavourite } = favouriteSlice.actions;
+export const favouriteActions = favouriteSlice.actions;
 
 export default favouriteSlice;

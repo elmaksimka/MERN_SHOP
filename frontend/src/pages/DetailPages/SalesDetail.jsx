@@ -7,7 +7,7 @@ const SalesDetailPage = () => {
 
   return (
     <>
-      <Navigation catName='Sales' isProd={true} prodName={saleData.name} />
+      <Navigation catName='Sales' catPath='sales' isProd={true} prodName={saleData.name} />
       <ProductDetail productData={saleData} />
     </>
   )

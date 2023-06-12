@@ -7,11 +7,17 @@ import circleBrown from '../img/circle-brown.svg'
 import circleBlue from '../img/circle-blue.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
+import { favouriteActions } from '../app/favourite-slice'
 
-const Sale = ({ id, url, name, price, oldprice, inkognitoAddToCartHandler, addToCartHandler }) => {
+const Sale = ({ id, url, name, price, oldprice, inkognitoAddToCartHandler, addToCartHandler, onAddToFav }) => {
     const dispatch = useDispatch();
     const [ellipseClass, setEllipseClass] = useState(false);
     const { user } = useSelector((state) => state.auth);
+    const isFavourite = useSelector(state => state.favouriteProducts.isFavourite[id] || false);
+
+    const toggleFavHandler = () => {
+        dispatch(favouriteActions.toggleFavourite({ id, url, name, price }));
+    }
 
     return (
         <div className="sale__product" key={id}>
@@ -20,7 +26,7 @@ const Sale = ({ id, url, name, price, oldprice, inkognitoAddToCartHandler, addTo
             <div className='sale__text_price'>{price}</div>
             <div className='sale__text_price_old'>{oldprice}</div>
             <div className="sale__heart">
-                <img src={heart} alt="heart" />
+                <img src={heart} alt="heart" className={isFavourite ? 'sale__heart_active' : 'sale__heart'} onClick={user ? toggleFavHandler : onAddToFav} />
             </div>
             <div className="sale__cart">
                 <div className="sale__cart__properties">

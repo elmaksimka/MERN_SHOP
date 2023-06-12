@@ -1,7 +1,7 @@
 function DeliveryReturnsPage() {
   return (
     <>
-      <div style={{ background: '#ead' }}>
+      <div className="empty">
         Delivery and returns content
       </div>
     </>

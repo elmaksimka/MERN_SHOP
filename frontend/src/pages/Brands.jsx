@@ -1,7 +1,7 @@
 function BrandsPage() {
   return (
     <>
-      <div style={{ background: '#ada' }}>
+      <div className="empty">
         Brands content
       </div>
     </>

@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom'
 import Home from '../../img/home.svg'
 import RightLine from '../../img/right-line.svg'
 
-const Navigation = ({ catName, prodName, isProd }) => {
+const Navigation = ({ catName, catPath, prodName, isProd }) => {
     return (
         <nav>
             <div className="nav">
@@ -16,7 +16,7 @@ const Navigation = ({ catName, prodName, isProd }) => {
                         <img src={RightLine} alt="right-line" />
                     </div>
                     <div>
-                        <NavLink end to={`/${catName}`} className={({ isActive }) => (isActive ? "nav__text__active" : "nav__text")}>
+                        <NavLink end to={`/${catPath}`} className={({ isActive }) => (isActive ? "nav__text__active" : "nav__text")}>
                             {catName}
                         </NavLink>
                     </div>

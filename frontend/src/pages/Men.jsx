@@ -1,7 +1,7 @@
 function MenPage() {
   return (
     <>
-      <div style={{ background: 'blue' }}>
+      <div className="empty">
         Men content
       </div>
     </>

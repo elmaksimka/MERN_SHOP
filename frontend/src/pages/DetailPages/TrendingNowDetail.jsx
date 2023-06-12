@@ -7,7 +7,7 @@ const TrendingNowDetailPage = () => {
 
     return (
         <>
-            <Navigation catName='TrendingNow' isProd={true} prodName={trendingNowData.name} />
+            <Navigation catName='Trending Now' catPath='trendingnow' isProd={true} prodName={trendingNowData.name} />
             <ProductDetail productData={trendingNowData} />
         </>
     )

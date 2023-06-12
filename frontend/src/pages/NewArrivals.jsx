@@ -15,7 +15,7 @@ function NewArrivalsPage() {
 
   return (
     <>
-      <Navigation catName='NewArrivals' isProd={false} />
+      <Navigation catName='New Arrivals' catPath='newarrivals' isProd={false} />
       <h1 className={classes.title}>
         New Arrivals
       </h1>

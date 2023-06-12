@@ -34,6 +34,9 @@ app.use("/subsemails", require("./routes/subEmailRoutes"));
 
 app.use("/subsemailswithcats", require("./routes/subEmailWithCatRoutes"));
 
+app.use("/favourites", require("./routes/favouriteRoutes"));
+
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/build")));
 

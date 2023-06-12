@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { toggleFavourite } from '../app/favourite-slice';
+import { favouriteActions } from '../app/favourite-slice';
 
 import heart from '../img/heart.svg';
 
@@ -11,7 +11,7 @@ export const NewArrival = ({ id, url, name, price, onAddToFav }) => {
   const isFavourite = useSelector(state => state.favouriteProducts.isFavourite[id] || false);
 
   const toggleFavHandler = () => {
-    dispatch(toggleFavourite({id, url, name, price}));
+    dispatch(favouriteActions.toggleFavourite({id, url, name, price}));
   }
 
   return (

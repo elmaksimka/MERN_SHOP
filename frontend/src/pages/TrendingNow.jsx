@@ -15,7 +15,7 @@ function TrendingNowPage() {
 
   return (
     <>
-      <Navigation catName='TrendingNow' isProd={false} />
+      <Navigation catName='Trending Now' catPath='trendingnow' isProd={false} />
       <h1 className={classes.title}>
         Trending Now
       </h1>

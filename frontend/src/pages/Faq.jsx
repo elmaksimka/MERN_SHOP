@@ -1,7 +1,7 @@
 function FaqPage() {
   return (
     <>
-      <div style={{ background: '#addd' }}>
+      <div className="empty">
         FAQ content
       </div>
     </>

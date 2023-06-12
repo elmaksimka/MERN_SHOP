@@ -1,7 +1,7 @@
 function ContactsPage() {
   return (
     <>
-      <div style={{ background: '#adad' }}>
+      <div className="empty">
         Contacts content
       </div>
     </>
